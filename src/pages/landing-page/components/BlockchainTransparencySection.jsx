@@ -4,61 +4,40 @@ import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
 
-const BlockchainTransparencySection = ({ currentLanguage }) => {
+const BlockchainTransparencySection = () => {
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      title: "Blockchain-Powered Transparency",
-      subtitle: "Every Transaction Verified, Every Impact Tracked",
-      description: "Our ESG blockchain layer ensures complete transparency in carbon credit trading and tree sponsorship. Each transaction is immutably recorded and publicly verifiable.",
-      learnMoreCTA: "Learn About Our Technology"
-    },
-    ar: {
-      title: "الشفافية المدعومة بالبلوكشين",
-      subtitle: "كل معاملة موثقة، كل تأثير متتبع",
-      description: "تضمن طبقة البلوكشين ESG الخاصة بنا الشفافية الكاملة في تداول أرصدة الكربون ورعاية الأشجار. يتم تسجيل كل معاملة بشكل غير قابل للتغيير ويمكن التحقق منها علنًا.",
-      learnMoreCTA: "تعرف على تقنيتنا"
-    }
+    title: "الشفافية المدعومة بالبلوكشين",
+    subtitle: "كل معاملة موثقة، كل تأثير متتبع",
+    description: "تضمن طبقة البلوكشين ESG الخاصة بنا الشفافية الكاملة في تداول أرصدة الكربون ورعاية الأشجار. يتم تسجيل كل معاملة بشكل غير قابل للتغيير ويمكن التحقق منها علنًا.",
+    learnMoreCTA: "تعرف على تقنيتنا"
   };
 
   const features = [
   {
     icon: "Shield",
-    title: { en: "Immutable Records", ar: "سجلات غير قابلة للتغيير" },
-    description: {
-      en: "All transactions permanently recorded on blockchain",
-      ar: "جميع المعاملات مسجلة بشكل دائم على البلوكشين"
-    }
+    title: "سجلات غير قابلة للتغيير",
+    description: "جميع المعاملات مسجلة بشكل دائم على البلوكشين"
   },
   {
     icon: "Eye",
-    title: { en: "Public Verification", ar: "التحقق العام" },
-    description: {
-      en: "Anyone can verify carbon credit authenticity",
-      ar: "يمكن لأي شخص التحقق من صحة أرصدة الكربون"
-    }
+    title: "التحقق العام",
+    description: "يمكن لأي شخص التحقق من صحة أرصدة الكربون"
   },
   {
     icon: "Lock",
-    title: { en: "NFT Ownership", ar: "ملكية NFT" },
-    description: {
-      en: "Carbon credits converted to unique NFT tokens",
-      ar: "تحويل أرصدة الكربون إلى رموز NFT فريدة"
-    }
+    title: "ملكية NFT",
+    description: "تحويل أرصدة الكربون إلى رموز NFT فريدة"
   },
   {
     icon: "TrendingUp",
-    title: { en: "Real-Time Tracking", ar: "التتبع في الوقت الفعلي" },
-    description: {
-      en: "Monitor your environmental impact instantly",
-      ar: "راقب تأثيرك البيئي على الفور"
-    }
+    title: "التتبع في الوقت الفعلي",
+    description: "مراقبة نمو الأشجار وتأثير الكربون في الوقت الفعلي"
   }];
 
 
-  const text = content?.[currentLanguage];
-
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5" dir="rtl">
       <div className="container-safe">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="order-2 lg:order-1">
@@ -78,13 +57,13 @@ const BlockchainTransparencySection = ({ currentLanguage }) => {
                   </div>
                   <div>
                     <div className="text-sm text-white">
-                      {currentLanguage === 'en' ? 'Verified Transactions' : 'المعاملات الموثقة'}
+                      المعاملات الموثقة
                     </div>
                     <div className="text-2xl font-bold text-white">12,847</div>
                   </div>
                 </div>
                 <div className="text-xs text-white">
-                  {currentLanguage === 'en' ? 'Last updated: 22 Dec 2025, 10:33 AM' : 'آخر تحديث: 22 ديسمبر 2025، 10:33 صباحًا'}
+                  آخر تحديث: 22 ديسمبر 2025، 10:33 صباحًا
                 </div>
               </div>
             </div>
@@ -93,13 +72,13 @@ const BlockchainTransparencySection = ({ currentLanguage }) => {
           <div className="order-1 lg:order-2 space-y-6 md:space-y-8">
             <div>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 md:mb-4">
-                {text?.title}
+                {content.title}
               </h2>
               <p className="text-lg md:text-xl text-primary font-semibold mb-4">
-                {text?.subtitle}
+                {content.subtitle}
               </p>
               <p className="text-base md:text-lg text-muted-foreground">
-                {text?.description}
+                {content.description}
               </p>
             </div>
 
@@ -113,10 +92,10 @@ const BlockchainTransparencySection = ({ currentLanguage }) => {
                     <Icon name={feature?.icon} size={24} className="text-primary" />
                   </div>
                   <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
-                    {feature?.title?.[currentLanguage]}
+                    {feature.title}
                   </h3>
                   <p className="text-sm md:text-base text-muted-foreground">
-                    {feature?.description?.[currentLanguage]}
+                    {feature.description}
                   </p>
                 </div>
               )}
@@ -130,7 +109,7 @@ const BlockchainTransparencySection = ({ currentLanguage }) => {
                 iconPosition="left"
                 className="w-full sm:w-auto">
 
-                {text?.learnMoreCTA}
+                {content.learnMoreCTA}
               </Button>
               <Button
                 variant="outline"
@@ -139,7 +118,7 @@ const BlockchainTransparencySection = ({ currentLanguage }) => {
                 iconPosition="right"
                 className="w-full sm:w-auto">
 
-                {currentLanguage === 'en' ? 'View Blockchain Explorer' : 'عرض مستكشف البلوكشين'}
+                عرض مستكشف البلوكشين
               </Button>
             </div>
           </div>

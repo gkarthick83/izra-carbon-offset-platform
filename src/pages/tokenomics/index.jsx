@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthenticatedHeader from '../../components/ui/AuthenticatedHeader';
 import Icon from '../../components/AppIcon';
@@ -12,60 +12,23 @@ import FooterSection from '../landing-page/components/FooterSection';
 
 const Tokenomics = () => {
   const navigate = useNavigate();
-  const [currentLanguage, setCurrentLanguage] = useState('en');
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setCurrentLanguage(savedLanguage);
-
-    const handleLanguageChange = () => {
-      const newLanguage = localStorage.getItem('language') || 'en';
-      setCurrentLanguage(newLanguage);
-    };
-
-    window.addEventListener('storage', handleLanguageChange);
-    const interval = setInterval(handleLanguageChange, 100);
-
-    return () => {
-      window.removeEventListener('storage', handleLanguageChange);
-      clearInterval(interval);
-    };
-  }, []);
-
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      hero: {
-        badge: "IZRA Token Economics",
-        title: "Powering Sustainable Growth",
-        subtitle: "Transparent Token Model Aligned with Environmental Impact",
-        description: "IZRA token serves as the economic engine of our carbon offset ecosystem, enabling governance, revenue sharing, and incentivizing environmental action across the UAE.",
-        cta: "Invest in IZRA"
-      },
-      stats: [
-        { label: "Total Supply", value: "1,000,000,000", suffix: "IZRA" },
-        { label: "Initial Price", value: "$0.10", suffix: "USD" },
-        { label: "Platform Fee", value: "2%", suffix: "" },
-        { label: "Investor Share", value: "40%", suffix: "" }
-      ]
+    hero: {
+      badge: "اقتصاديات رمز إزرع",
+      title: "تعزيز النمو المستدام",
+      subtitle: "نموذج رمز شفاف يتماشى مع التأثير البيئي",
+      description: "يعمل رمز إزرع كمحرك اقتصادي لنظام تعويض الكربون الخاص بنا، مما يتيح الحوكمة ومشاركة الإيرادات وتحفيز العمل البيئي في جميع أنحاء الإمارات.",
+      cta: "استثمر في إزرع"
     },
-    ar: {
-      hero: {
-        badge: "اقتصاديات رمز إزرع",
-        title: "تعزيز النمو المستدام",
-        subtitle: "نموذج رمز شفاف يتماشى مع التأثير البيئي",
-        description: "يعمل رمز إزرع كمحرك اقتصادي لنظام تعويض الكربون الخاص بنا، مما يتيح الحوكمة ومشاركة الإيرادات وتحفيز العمل البيئي في جميع أنحاء الإمارات.",
-        cta: "استثمر في إزرع"
-      },
-      stats: [
-        { label: "إجمالي العرض", value: "1,000,000,000", suffix: "إزرع" },
-        { label: "السعر الأولي", value: "$0.10", suffix: "دولار" },
-        { label: "رسوم المنصة", value: "2%", suffix: "" },
-        { label: "حصة المستثمر", value: "40%", suffix: "" }
-      ]
-    }
+    stats: [
+      { label: "إجمالي العرض", value: "1,000,000,000", suffix: "إزرع" },
+      { label: "السعر الأولي", value: "$0.10", suffix: "دولار" },
+      { label: "رسوم المنصة", value: "2%", suffix: "" },
+      { label: "حصة المستثمر", value: "40%", suffix: "" }
+    ]
   };
-
-  const text = content?.[currentLanguage];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -76,7 +39,7 @@ const Tokenomics = () => {
       />
 
       <main className="flex-grow">
-        <section className="relative pt-0 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+        <section className="relative pt-0 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900" dir="rtl">
           <div className="container-safe">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Column - Text Content */}
@@ -84,25 +47,25 @@ const Tokenomics = () => {
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30">
                   <Icon name="DollarSign" size={20} className="text-emerald-400" />
                   <span className="text-sm md:text-base font-medium text-emerald-300">
-                    {text?.hero?.badge}
+                    {content.hero.badge}
                   </span>
                 </div>
 
                 <div className="space-y-3 md:space-y-4">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-lg">
-                    {text?.hero?.title}
+                    {content.hero.title}
                   </h1>
                   <h2 className="text-xl md:text-2xl font-semibold text-emerald-300 drop-shadow-md">
-                    {text?.hero?.subtitle}
+                    {content.hero.subtitle}
                   </h2>
                 </div>
 
                 <p className="text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl drop-shadow-md">
-                  {text?.hero?.description}
+                  {content.hero.description}
                 </p>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2">
-                  {text?.stats?.map((stat, index) => (
+                  {content.stats?.map((stat, index) => (
                     <div key={index} className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 break-words">
                       <div className="text-base md:text-lg font-bold text-white mb-1 break-all">
                         {stat?.value} {stat?.suffix && <span className="text-sm font-medium">{stat.suffix}</span>}
@@ -122,7 +85,7 @@ const Tokenomics = () => {
                   onClick={() => navigate('/invest-in-izra')}
                   className="mt-4"
                 >
-                  {text?.hero?.cta}
+                  {content.hero.cta}
                 </Button>
               </div>
 
@@ -139,11 +102,11 @@ const Tokenomics = () => {
           </div>
         </section>
 
-        <TokenDistributionSection currentLanguage={currentLanguage} />
-        <RevenueModelSection currentLanguage={currentLanguage} />
-        <StakingSection currentLanguage={currentLanguage} />
-        <RoadmapSection currentLanguage={currentLanguage} />
-        <FooterSection currentLanguage={currentLanguage} />
+        <TokenDistributionSection />
+        <RevenueModelSection />
+        <StakingSection />
+        <RoadmapSection />
+        <FooterSection />
       </main>
     </div>
   );

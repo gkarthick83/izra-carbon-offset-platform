@@ -21,10 +21,10 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const roleOptions = [
-    { value: 'buyer', label: 'Buyer - Purchase Carbon Credits' },
-    { value: 'seller', label: 'Seller - Sell Carbon Credits' },
-    { value: 'investor', label: 'Investor - Invest in IZRA Token' },
-    { value: 'sponsor', label: 'Sponsor - Plant Trees in UAE' }
+    { value: 'buyer', label: 'مشتري - شراء أرصدة الكربون' },
+    { value: 'seller', label: 'بائع - بيع أرصدة الكربون' },
+    { value: 'investor', label: 'مستثمر - الاستثمار في رمز IZRA' },
+    { value: 'sponsor', label: 'راعي - زراعة الأشجار في الإمارات' }
   ];
 
   const handleChange = (e) => {
@@ -41,13 +41,13 @@ export default function SignUp() {
 
     // Validation
     if (formData?.password !== formData?.confirmPassword) {
-      setError('Passwords do not match');
+      setError('كلمات المرور غير متطابقة');
       setLoading(false);
       return;
     }
 
     if (formData?.password?.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError('يجب أن تكون كلمة المرور 6 أحرف على الأقل');
       setLoading(false);
       return;
     }
@@ -76,14 +76,14 @@ export default function SignUp() {
         navigate('/login');
       }, 3000);
     } catch (err) {
-      setError(err?.message || 'An error occurred during signup');
+      setError(err?.message || 'حدث خطأ أثناء التسجيل');
       setLoading(false);
     }
   };
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4" dir="rtl">
         <div className="w-full max-w-md mx-auto">
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
             <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -92,19 +92,19 @@ export default function SignUp() {
               </svg>
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              Account Created Successfully!
+              تم إنشاء الحساب بنجاح!
             </h2>
             <p className="text-gray-600 mb-4">
-              Please check your email for a confirmation link.
+              يرجى التحقق من بريدك الإلكتروني للحصول على رابط التأكيد.
             </p>
             <p className="text-sm text-gray-500 mb-6">
-              After confirming your email, you can sign in to your account.
+              بعد تأكيد بريدك الإلكتروني، يمكنك تسجيل الدخول إلى حسابك.
             </p>
             <Button
               onClick={() => navigate('/login')}
               className="bg-emerald-600 hover:bg-emerald-700 text-white"
             >
-              Go to Sign In
+              الانتقال إلى تسجيل الدخول
             </Button>
           </div>
         </div>
@@ -113,15 +113,15 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4" dir="rtl">
       <div className="w-full max-w-md mx-auto">
         <div className="bg-white rounded-xl shadow-lg p-8">
           <div className="text-center mb-6">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">
-              Join IZRA Platform
+              انضم إلى منصة IZRA
             </h1>
             <p className="text-gray-600">
-              Create your account to start your carbon offset journey
+              أنشئ حسابك لبدء رحلة تعويض الكربون
             </p>
           </div>
 
@@ -134,7 +134,7 @@ export default function SignUp() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-                Full Name
+                الاسم الكامل
               </label>
               <Input
                 id="fullName"
@@ -142,7 +142,7 @@ export default function SignUp() {
                 type="text"
                 value={formData?.fullName}
                 onChange={handleChange}
-                placeholder="John Doe"
+                placeholder="أحمد محمد"
                 required
                 disabled={loading}
               />
@@ -150,7 +150,7 @@ export default function SignUp() {
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
+                البريد الإلكتروني
               </label>
               <Input
                 id="email"
@@ -166,7 +166,7 @@ export default function SignUp() {
 
             <div>
               <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                Account Type
+                نوع الحساب
               </label>
               <Select
                 id="role"
@@ -181,7 +181,7 @@ export default function SignUp() {
 
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                Phone Number (Optional)
+                رقم الهاتف (اختياري)
               </label>
               <Input
                 id="phone"
@@ -196,7 +196,7 @@ export default function SignUp() {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                كلمة المرور
               </label>
               <Input
                 id="password"
@@ -204,7 +204,7 @@ export default function SignUp() {
                 type="password"
                 value={formData?.password}
                 onChange={handleChange}
-                placeholder="At least 6 characters"
+                placeholder="على الأقل 6 أحرف"
                 required
                 disabled={loading}
               />
@@ -212,7 +212,7 @@ export default function SignUp() {
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-                Confirm Password
+                تأكيد كلمة المرور
               </label>
               <Input
                 id="confirmPassword"
@@ -220,7 +220,7 @@ export default function SignUp() {
                 type="password"
                 value={formData?.confirmPassword}
                 onChange={handleChange}
-                placeholder="Confirm your password"
+                placeholder="تأكيد كلمة المرور"
                 required
                 disabled={loading}
               />
@@ -231,18 +231,18 @@ export default function SignUp() {
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
               disabled={loading}
             >
-              {loading ? 'Creating Account...' : 'Create Account'}
+              {loading ? 'جارٍ إنشاء الحساب...' : 'إنشاء حساب'}
             </Button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              Already have an account?{' '}
+              هل لديك حساب بالفعل؟{' '}
               <button
                 onClick={() => navigate('/login')}
                 className="text-emerald-600 hover:text-emerald-700 font-medium"
               >
-                Sign In
+                تسجيل الدخول
               </button>
             </p>
           </div>

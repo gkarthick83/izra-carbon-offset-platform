@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LanguageToggle from '../../components/ui/LanguageToggle';
 import LoginForm from './components/LoginForm';
@@ -7,20 +7,8 @@ import Icon from '../../components/AppIcon';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [currentLanguage, setCurrentLanguage] = useState('en');
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setCurrentLanguage(savedLanguage);
-
-    const handleLanguageChange = () => {
-      const newLanguage = localStorage.getItem('language') || 'en';
-      setCurrentLanguage(newLanguage);
-    };
-
-    window.addEventListener('storage', handleLanguageChange);
-    const interval = setInterval(handleLanguageChange, 100);
-
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (isAuthenticated === 'true') {
       const userRole = localStorage.getItem('userRole');
@@ -34,11 +22,6 @@ const Login = () => {
       };
       navigate(dashboardRoutes?.[userRole] || '/landing-page');
     }
-
-    return () => {
-      window.removeEventListener('storage', handleLanguageChange);
-      clearInterval(interval);
-    };
   }, [navigate]);
 
   return (
@@ -48,7 +31,7 @@ const Login = () => {
       </div>
       <div className="min-h-screen grid lg:grid-cols-2">
         <div className="hidden lg:block">
-          <LoginHero currentLanguage={currentLanguage} />
+          <LoginHero />
         </div>
 
         <div className="flex items-center justify-center p-4 md:p-6 lg:p-8">
@@ -59,20 +42,17 @@ const Login = () => {
             >
               <Icon name="ArrowLeft" size={20} />
               <span className="text-sm font-medium">
-                {currentLanguage === 'en' ? 'Back to Home' : 'العودة للرئيسية'}
+                العودة للرئيسية
               </span>
             </button>
 
             <div className="bg-card rounded-2xl shadow-lg p-6 md:p-8 lg:p-10">
-              <LoginForm currentLanguage={currentLanguage} />
+              <LoginForm />
             </div>
 
             <div className="mt-6 md:mt-8 text-center">
               <p className="text-xs md:text-sm text-muted-foreground">
-                {currentLanguage === 'en' 
-                  ? `© ${new Date()?.getFullYear()} IZRA. All rights reserved.`
-                  : `© ${new Date()?.getFullYear()} IZRA. جميع الحقوق محفوظة.`
-                }
+                © ${new Date()?.getFullYear()} IZRA. جميع الحقوق محفوظة.
               </p>
             </div>
           </div>

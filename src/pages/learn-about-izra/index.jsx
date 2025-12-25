@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthenticatedHeader from '../../components/ui/AuthenticatedHeader';
 import Icon from '../../components/AppIcon';
@@ -13,48 +13,17 @@ import FooterSection from '../landing-page/components/FooterSection';
 
 const LearnAboutIzra = () => {
   const navigate = useNavigate();
-  const [currentLanguage, setCurrentLanguage] = useState('en');
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setCurrentLanguage(savedLanguage);
-
-    const handleLanguageChange = () => {
-      const newLanguage = localStorage.getItem('language') || 'en';
-      setCurrentLanguage(newLanguage);
-    };
-
-    window.addEventListener('storage', handleLanguageChange);
-    const interval = setInterval(handleLanguageChange, 100);
-
-    return () => {
-      window.removeEventListener('storage', handleLanguageChange);
-      clearInterval(interval);
-    };
-  }, []);
-
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      hero: {
-        badge: "About IZRA Platform",
-        title: "Empowering UAE\'s Carbon Neutrality Vision",
-        subtitle: "The First Blockchain-Powered Carbon Offset Marketplace in the UAE",
-        description: "IZRA connects environmental sponsors, carbon credit sellers, and conscious buyers in a transparent ecosystem dedicated to achieving UAE's Net Zero 2050 goals through mangrove restoration and verified carbon offsetting.",
-        cta: "Get Started"
-      }
-    },
-    ar: {
-      hero: {
-        badge: "حول منصة إزرع",
-        title: "تمكين رؤية الحياد الكربوني في الإمارات",
-        subtitle: "أول سوق لتعويض الكربون يعمل بتقنية البلوكشين في الإمارات",
-        description: "تربط إزرع رعاة البيئة وبائعي أرصدة الكربون والمشترين الواعين في نظام بيئي شفاف مخصص لتحقيق أهداف الإمارات للحياد الصفري 2050 من خلال استعادة المانغروف وتعويض الكربون المعتمد.",
-        cta: "ابدأ الآن"
-      }
+    hero: {
+      badge: "حول منصة إزرع",
+      title: "تمكين رؤية الحياد الكربوني في الإمارات",
+      subtitle: "أول سوق لتعويض الكربون يعمل بتقنية البلوكشين في الإمارات",
+      description: "تربط إزرع رعاة البيئة وبائعي أرصدة الكربون والمشترين الواعين في نظام بيئي شفاف مخصص لتحقيق أهداف الإمارات للحياد الصفري 2050 من خلال استعادة المانغروف وتعويض الكربون المعتمد.",
+      cta: "ابدأ الآن"
     }
   };
-
-  const text = content?.[currentLanguage];
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,7 +34,7 @@ const LearnAboutIzra = () => {
 
 
       <main className="flex-grow">
-        <section className="relative pt-0 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+        <section className="relative pt-0 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900" dir="rtl">
           <div className="container-safe">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Column - Text Content */}
@@ -73,21 +42,21 @@ const LearnAboutIzra = () => {
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30">
                   <Icon name="Info" size={20} className="text-emerald-400" />
                   <span className="text-sm md:text-base font-medium text-emerald-300">
-                    {text?.hero?.badge}
+                    {content.hero.badge}
                   </span>
                 </div>
 
                 <div className="space-y-3 md:space-y-4">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-lg">
-                    {text?.hero?.title}
+                    {content.hero.title}
                   </h1>
                   <h2 className="text-xl md:text-2xl font-semibold text-emerald-300 drop-shadow-md">
-                    {text?.hero?.subtitle}
+                    {content.hero.subtitle}
                   </h2>
                 </div>
 
                 <p className="text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl drop-shadow-md">
-                  {text?.hero?.description}
+                  {content.hero.description}
                 </p>
 
                 <Button
@@ -98,7 +67,7 @@ const LearnAboutIzra = () => {
                   onClick={() => navigate('/plant-tree-sponsorship')}
                   className="mt-4"
                 >
-                  {text?.hero?.cta}
+                  {content.hero.cta}
                 </Button>
               </div>
 
@@ -115,12 +84,12 @@ const LearnAboutIzra = () => {
           </div>
         </section>
 
-        <MissionSection currentLanguage={currentLanguage} />
-        <HowItWorksSection currentLanguage={currentLanguage} />
-        <StakeholdersSection currentLanguage={currentLanguage} />
-        <ImpactMetricsSection currentLanguage={currentLanguage} />
-        <TechnologySection currentLanguage={currentLanguage} />
-        <FooterSection currentLanguage={currentLanguage} />
+        <MissionSection />
+        <HowItWorksSection />
+        <StakeholdersSection />
+        <ImpactMetricsSection />
+        <TechnologySection />
+        <FooterSection />
       </main>
     </div>);
 

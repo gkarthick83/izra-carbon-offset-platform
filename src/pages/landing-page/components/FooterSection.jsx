@@ -2,51 +2,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 
-const FooterSection = ({ currentLanguage }) => {
+const FooterSection = () => {
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      tagline: "Offsetting Carbon, Restoring Nature",
-      quickLinks: "Quick Links",
-      forSponsors: "For Sponsors",
-      forSellers: "For Sellers",
-      forBuyers: "For Buyers",
-      forInvestors: "For Investors",
-      contact: "Contact Us",
-      followUs: "Follow Us",
-      copyright: `© ${new Date()?.getFullYear()} IZRA UAE. All rights reserved.`,
-      links: {
-        home: "Home",
-        plantTrees: "Plant Trees",
-        marketplace: "Marketplace",
-        about: "About Us",
-        faq: "FAQ",
-        terms: "Terms of Service",
-        privacy: "Privacy Policy"
-      }
-    },
-    ar: {
-      tagline: "تعويض الكربون، استعادة الطبيعة",
-      quickLinks: "روابط سريعة",
-      forSponsors: "للرعاة",
-      forSellers: "للبائعين",
-      forBuyers: "للمشترين",
-      forInvestors: "للمستثمرين",
-      contact: "اتصل بنا",
-      followUs: "تابعنا",
-      copyright: `© ${new Date()?.getFullYear()} IZRA الإمارات. جميع الحقوق محفوظة.`,
-      links: {
-        home: "الرئيسية",
-        plantTrees: "ازرع الأشجار",
-        marketplace: "السوق",
-        about: "من نحن",
-        faq: "الأسئلة الشائعة",
-        terms: "شروط الخدمة",
-        privacy: "سياسة الخصوصية"
-      }
+    tagline: "تعويض الكربون، استعادة الطبيعة",
+    quickLinks: "روابط سريعة",
+    forSponsors: "للرعاة",
+    forSellers: "للبائعين",
+    forBuyers: "للمشترين",
+    forInvestors: "للمستثمرين",
+    contact: "اتصل بنا",
+    followUs: "تابعنا",
+    copyright: `© ${new Date()?.getFullYear()} IZRA الإمارات. جميع الحقوق محفوظة.`,
+    links: {
+      home: "الرئيسية",
+      plantTrees: "ازرع الأشجار",
+      marketplace: "السوق",
+      about: "من نحن",
+      faq: "الأسئلة الشائعة",
+      terms: "شروط الخدمة",
+      privacy: "سياسة الخصوصية"
     }
   };
 
-  const text = content?.[currentLanguage];
+  const text = content;
 
   const socialLinks = [
     { icon: "Twitter", url: "#", label: "Twitter" },
@@ -56,7 +35,7 @@ const FooterSection = ({ currentLanguage }) => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border py-8 md:py-12 lg:py-16">
+    <footer className="bg-card border-t border-border py-8 md:py-12 lg:py-16" dir="rtl">
       <div className="container-safe">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
           <div className="space-y-4">
@@ -67,7 +46,7 @@ const FooterSection = ({ currentLanguage }) => {
               <span className="text-2xl font-bold text-foreground">IZRA</span>
             </Link>
             <p className="text-sm md:text-base text-muted-foreground">
-              {text?.tagline}
+              {content.tagline}
             </p>
             <div className="flex gap-3">
               {socialLinks?.map((social, index) => (
@@ -85,32 +64,32 @@ const FooterSection = ({ currentLanguage }) => {
 
           <div>
             <h3 className="text-base md:text-lg font-bold text-foreground mb-4">
-              {text?.quickLinks}
+              {content.quickLinks}
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/landing-page" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {text?.links?.home}
+                  {content.links.home}
                 </Link>
               </li>
               <li>
                 <Link to="/plant-tree-sponsorship" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {text?.links?.plantTrees}
+                  {content.links.plantTrees}
                 </Link>
               </li>
               <li>
                 <Link to="/carbon-credit-marketplace" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {text?.links?.marketplace}
+                  {content.links.marketplace}
                 </Link>
               </li>
               <li>
                 <Link to="/learn-about-izra" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {text?.links?.about}
+                  {content.links.about}
                 </Link>
               </li>
               <li>
                 <Link to="/tokenomics" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {currentLanguage === 'en' ? 'Tokenomics' : 'الاقتصاد الرمزي'}
+                  الاقتصاد الرمزي
                 </Link>
               </li>
             </ul>
@@ -118,27 +97,27 @@ const FooterSection = ({ currentLanguage }) => {
 
           <div>
             <h3 className="text-base md:text-lg font-bold text-foreground mb-4">
-              {text?.forSponsors}
+              {content.forSponsors}
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/sponsor-dashboard" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {currentLanguage === 'en' ? 'Sponsor Dashboard' : 'لوحة الراعي'}
+                  لوحة الراعي
                 </Link>
               </li>
               <li>
                 <Link to="/seller-portal" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {text?.forSellers}
+                  {content.forSellers}
                 </Link>
               </li>
               <li>
                 <Link to="/buyer-dashboard" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {text?.forBuyers}
+                  {content.forBuyers}
                 </Link>
               </li>
               <li>
                 <Link to="/investor-dashboard" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-smooth no-underline">
-                  {text?.forInvestors}
+                  {content.forInvestors}
                 </Link>
               </li>
             </ul>
@@ -146,7 +125,7 @@ const FooterSection = ({ currentLanguage }) => {
 
           <div>
             <h3 className="text-base md:text-lg font-bold text-foreground mb-4">
-              {text?.contact}
+              {content.contact}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
@@ -158,7 +137,7 @@ const FooterSection = ({ currentLanguage }) => {
               <li className="flex items-start gap-2">
                 <Icon name="MapPin" size={18} className="text-primary mt-1 flex-shrink-0" />
                 <span className="text-sm md:text-base text-muted-foreground">
-                  {currentLanguage === 'en' ?'Dubai, United Arab Emirates' :'دبي، الإمارات العربية المتحدة'}
+                  دبي، الإمارات العربية المتحدة
                 </span>
               </li>
             </ul>
@@ -168,14 +147,14 @@ const FooterSection = ({ currentLanguage }) => {
         <div className="pt-6 md:pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
-              {text?.copyright}
+              {content.copyright}
             </p>
             <div className="flex gap-4">
               <a href="#terms" className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-smooth no-underline">
-                {text?.links?.terms}
+                {content.links.terms}
               </a>
               <a href="#privacy" className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-smooth no-underline">
-                {text?.links?.privacy}
+                {content.links.privacy}
               </a>
             </div>
           </div>

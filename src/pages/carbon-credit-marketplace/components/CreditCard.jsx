@@ -22,7 +22,7 @@ const CreditCard = ({ credit, onPurchase }) => {
   } = credit;
 
   const formatCurrency = (amount, curr) => {
-    if (curr === 'AED') return `AED ${amount?.toFixed(2)}`;
+    if (curr === 'د.إ') return `د.إ ${amount?.toFixed(2)}`;
     if (curr === 'USD') return `$${amount?.toFixed(2)}`;
     if (curr === 'USDT' || curr === 'USDC') return `${amount?.toFixed(2)} ${curr}`;
     return `${amount?.toFixed(2)} ${curr}`;
@@ -39,15 +39,15 @@ const CreditCard = ({ credit, onPurchase }) => {
 
   const getProjectTypeLabel = (type) => {
     switch (type) {
-      case 'mangrove': return 'Mangrove Restoration';
-      case 'solar': return 'Solar Energy';
-      case 'afforestation': return 'Afforestation';
+      case 'mangrove': return 'استعادة المانغروف';
+      case 'solar': return 'الطاقة الشمسية';
+      case 'afforestation': return 'التشجير';
       default: return type;
     }
   };
 
   return (
-    <div className="bg-card rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-smooth hover-lift">
+    <div className="bg-card rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-smooth hover-lift" dir="rtl">
       {/* Project Image */}
       <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden">
         <Image
@@ -63,7 +63,7 @@ const CreditCard = ({ credit, onPurchase }) => {
           )}
           <span className="px-3 py-1 bg-success text-success-foreground text-xs font-semibold rounded-full shadow-md flex items-center gap-1">
             <Icon name="CheckCircle" size={14} />
-            Verified
+            موثق
           </span>
         </div>
       </div>
@@ -96,13 +96,13 @@ const CreditCard = ({ credit, onPurchase }) => {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-3 mb-4 p-3 bg-muted/50 rounded-lg">
           <div>
-            <p className="text-xs text-muted-foreground mb-1">Available</p>
+            <p className="text-xs text-muted-foreground mb-1">متاح</p>
             <p className="text-base md:text-lg font-semibold text-foreground data-text">
               {availableTonnage?.toLocaleString()} t
             </p>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground mb-1">Price per Tonne</p>
+            <p className="text-xs text-muted-foreground mb-1">السعر لكل طن</p>
             <p className="text-base md:text-lg font-semibold text-primary data-text">
               {formatCurrency(pricePerTonne, currency)}
             </p>
@@ -126,12 +126,12 @@ const CreditCard = ({ credit, onPurchase }) => {
           iconPosition="left"
           onClick={() => onPurchase(credit)}
         >
-          Purchase Credits
+          شراء الاعتمادات
         </Button>
 
         {/* Verification Date */}
         <p className="text-xs text-center text-muted-foreground mt-3">
-          Verified: {new Date(verificationDate)?.toLocaleDateString('en-GB')}
+          تم التحقق: {new Date(verificationDate)?.toLocaleDateString('ar-AE')}
         </p>
       </div>
     </div>

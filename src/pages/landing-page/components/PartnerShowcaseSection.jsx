@@ -2,73 +2,64 @@ import React from 'react';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 
-const PartnerShowcaseSection = ({ currentLanguage }) => {
+const PartnerShowcaseSection = () => {
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      title: "Our Trusted Partners",
-      subtitle: "Collaborating with Leading Environmental Organizations",
-      description: "We work with world-class verification agencies, environmental monitoring partners, and technology providers to ensure the highest standards of carbon offset integrity."
-    },
-    ar: {
-      title: "شركاؤنا الموثوقون",
-      subtitle: "التعاون مع المنظمات البيئية الرائدة",
-      description: "نعمل مع وكالات التحقق من الطراز العالمي وشركاء المراقبة البيئية ومقدمي التكنولوجيا لضمان أعلى معايير نزاهة تعويض الكربون."
-    }
+    title: "شركاؤنا الموثوقون",
+    subtitle: "التعاون مع المنظمات البيئية الرائدة",
+    description: "نعمل مع وكالات التحقق من الطراز العالمي وشركاء المراقبة البيئية ومقدمي التكنولوجيا لضمان أعلى معايير نزاهة تعويض الكربون."
   };
 
   const partners = [
   {
-    name: "Verra Registry",
+    name: "سجل Verra",
     logo: "https://img.rocket.new/generatedImages/rocket_gen_img_18e8480a7-1764760992838.png",
     logoAlt: "Verra carbon standard verification registry logo with green leaf symbol representing verified carbon credits",
-    category: { en: "Verification", ar: "التحقق" }
+    category: "التحقق"
   },
   {
-    name: "Gold Standard",
+    name: "المعيار الذهبي",
     logo: "https://img.rocket.new/generatedImages/rocket_gen_img_1c29a565c-1764760994000.png",
     logoAlt: "Gold Standard certification logo with golden badge representing premium carbon offset verification",
-    category: { en: "Certification", ar: "الشهادة" }
+    category: "الشهادة"
   },
   {
-    name: "UAE Ministry of Climate Change",
+    name: "وزارة التغير المناخي في الإمارات العربية المتحدة",
     logo: "https://img.rocket.new/generatedImages/rocket_gen_img_1e20564bf-1765031734759.png",
     logoAlt: "UAE Ministry of Climate Change and Environment official emblem with national colors and environmental symbols",
-    category: { en: "Government", ar: "الحكومة" }
+    category: "الحكومة"
   },
   {
-    name: "Satellite Monitoring Systems",
+    name: "أنظمة المراقبة بالأقمار الصناعية",
     logo: "https://img.rocket.new/generatedImages/rocket_gen_img_18f77f544-1766400233926.png",
     logoAlt: "Satellite earth observation technology logo showing orbital satellite monitoring environmental changes",
-    category: { en: "Technology", ar: "التكنولوجيا" }
+    category: "التكنولوجيا"
   },
   {
-    name: "Environmental IoT Solutions",
+    name: "حلول إنترنت الأشياء البيئية",
     logo: "https://img.rocket.new/generatedImages/rocket_gen_img_1f35d719e-1766400237409.png",
     logoAlt: "IoT environmental sensor network logo with connected devices monitoring air quality and climate data",
-    category: { en: "Monitoring", ar: "المراقبة" }
+    category: "المراقبة"
   },
   {
-    name: "Blockchain Verification Network",
+    name: "شبكة التحقق بالتكنولوجيا الكتلية",
     logo: "https://img.rocket.new/generatedImages/rocket_gen_img_16e5e842f-1766400237458.png",
     logoAlt: "Blockchain distributed ledger technology logo with interconnected nodes representing transparent verification",
-    category: { en: "Technology", ar: "التكنولوجيا" }
+    category: "التكنولوجيا"
   }];
 
-
-  const text = content?.[currentLanguage];
-
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-background">
+    <section className="py-12 md:py-16 lg:py-20 bg-background" dir="rtl">
       <div className="container-safe">
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 md:mb-4">
-            {text?.title}
+            {content.title}
           </h2>
           <p className="text-lg md:text-xl text-primary font-semibold mb-4">
-            {text?.subtitle}
+            {content.subtitle}
           </p>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            {text?.description}
+            {content.description}
           </p>
         </div>
 
@@ -89,7 +80,7 @@ const PartnerShowcaseSection = ({ currentLanguage }) => {
                 {partner?.name}
               </h3>
               <div className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                {partner?.category?.[currentLanguage]}
+                {partner.category}
               </div>
             </div>
           )}
@@ -99,7 +90,7 @@ const PartnerShowcaseSection = ({ currentLanguage }) => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted">
             <Icon name="CheckCircle2" size={20} className="text-success" />
             <span className="text-sm md:text-base text-foreground font-medium">
-              {currentLanguage === 'en' ? 'All partners verified and certified for environmental standards' : 'جميع الشركاء موثقون ومعتمدون للمعايير البيئية'}
+              جميع الشركاء موثقون ومعتمدون للمعايير البيئية
             </span>
           </div>
         </div>

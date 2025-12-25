@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthenticatedHeader from '../../components/ui/AuthenticatedHeader';
 import Icon from '../../components/AppIcon';
@@ -14,60 +14,23 @@ import FooterSection from '../landing-page/components/FooterSection';
 
 const InvestInIzra = () => {
   const navigate = useNavigate();
-  const [currentLanguage, setCurrentLanguage] = useState('en');
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setCurrentLanguage(savedLanguage);
-
-    const handleLanguageChange = () => {
-      const newLanguage = localStorage.getItem('language') || 'en';
-      setCurrentLanguage(newLanguage);
-    };
-
-    window.addEventListener('storage', handleLanguageChange);
-    const interval = setInterval(handleLanguageChange, 100);
-
-    return () => {
-      window.removeEventListener('storage', handleLanguageChange);
-      clearInterval(interval);
-    };
-  }, []);
-
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      hero: {
-        badge: "Investment Opportunity",
-        title: "Invest in UAE\'s Carbon Offset Future",
-        subtitle: "IZRA Token - Sustainable Returns with Environmental Impact",
-        description: "Join the UAE's first blockchain-powered carbon offset platform as an investor. Earn revenue share from platform fees, participate in governance, and contribute to achieving Net Zero 2050 goals.",
-        cta: "Start Investing"
-      },
-      quickStats: [
-      { label: "Token Price", value: "$0.10", icon: "DollarSign" },
-      { label: "Min Investment", value: "$1,000", icon: "Wallet" },
-      { label: "Revenue Share", value: "40%", icon: "TrendingUp" },
-      { label: "Expected APY", value: "12-18%", icon: "BarChart" }]
-
+    hero: {
+      badge: "فرصة استثمارية",
+      title: "استثمر في مستقبل تعويض الكربون في الإمارات",
+      subtitle: "رمز إزرع - عوائد مستدامة مع تأثير بيئي",
+      description: "انضم إلى أول منصة لتعويض الكربون تعمل بتقنية البلوكشين في الإمارات كمستثمر. اكسب حصة من إيرادات رسوم المنصة، وشارك في الحوكمة، وساهم في تحقيق أهداف الحياد الصفري 2050.",
+      cta: "ابدأ الاستثمار"
     },
-    ar: {
-      hero: {
-        badge: "فرصة استثمارية",
-        title: "استثمر في مستقبل تعويض الكربون في الإمارات",
-        subtitle: "رمز إزرع - عوائد مستدامة مع تأثير بيئي",
-        description: "انضم إلى أول منصة لتعويض الكربون تعمل بتقنية البلوكشين في الإمارات كمستثمر. اكسب حصة من إيرادات رسوم المنصة، وشارك في الحوكمة، وساهم في تحقيق أهداف الحياد الصفري 2050.",
-        cta: "ابدأ الاستثمار"
-      },
-      quickStats: [
+    quickStats: [
       { label: "سعر الرمز", value: "$0.10", icon: "DollarSign" },
       { label: "الحد الأدنى للاستثمار", value: "$1,000", icon: "Wallet" },
       { label: "حصة الإيرادات", value: "40%", icon: "TrendingUp" },
-      { label: "APY المتوقع", value: "12-18%", icon: "BarChart" }]
-
-    }
+      { label: "APY المتوقع", value: "12-18%", icon: "BarChart" }
+    ]
   };
-
-  const text = content?.[currentLanguage];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -77,7 +40,7 @@ const InvestInIzra = () => {
         onLogout={() => {}} />
 
       <main className="flex-grow">
-        <section className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+        <section className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900" dir="rtl">
           <div className="container-safe">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Column - Text Content */}
@@ -85,25 +48,25 @@ const InvestInIzra = () => {
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30">
                   <Icon name="TrendingUp" size={20} className="text-emerald-400" />
                   <span className="text-sm md:text-base font-medium text-emerald-300">
-                    {text?.hero?.badge}
+                    {content.hero.badge}
                   </span>
                 </div>
 
                 <div className="space-y-3 md:space-y-4">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-lg">
-                    {text?.hero?.title}
+                    {content.hero.title}
                   </h1>
                   <h2 className="text-xl md:text-2xl font-semibold text-emerald-300 drop-shadow-md">
-                    {text?.hero?.subtitle}
+                    {content.hero.subtitle}
                   </h2>
                 </div>
 
                 <p className="text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl drop-shadow-md">
-                  {text?.hero?.description}
+                  {content.hero.description}
                 </p>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2">
-                  {text?.quickStats?.map((stat, index) => (
+                  {content.quickStats?.map((stat, index) => (
                     <div key={index} className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 overflow-hidden">
                       <div className="text-lg md:text-xl font-bold text-white mb-1 truncate">
                         {stat?.value}
@@ -124,7 +87,7 @@ const InvestInIzra = () => {
                   onClick={() => navigate('/signup?type=investor')}
                   className="mt-4"
                 >
-                  {text?.hero?.cta}
+                  {content.hero.cta}
                 </Button>
               </div>
 
@@ -141,13 +104,13 @@ const InvestInIzra = () => {
           </div>
         </section>
 
-        <InvestmentOverviewSection currentLanguage={currentLanguage} />
-        <TokenAcquisitionSection currentLanguage={currentLanguage} />
-        <InvestmentCalculatorSection currentLanguage={currentLanguage} />
-        <RiskDisclosureSection currentLanguage={currentLanguage} />
-        <InvestorBenefitsSection currentLanguage={currentLanguage} />
-        <KYCRequirementsSection currentLanguage={currentLanguage} />
-        <FooterSection currentLanguage={currentLanguage} />
+        <InvestmentOverviewSection />
+        <TokenAcquisitionSection />
+        <InvestmentCalculatorSection />
+        <RiskDisclosureSection />
+        <InvestorBenefitsSection />
+        <KYCRequirementsSection />
+        <FooterSection />
       </main>
     </div>);
 

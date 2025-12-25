@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthenticatedHeader from '../../components/ui/AuthenticatedHeader';
 import HeroSection from './components/HeroSection';
@@ -12,25 +12,6 @@ import FooterSection from './components/FooterSection';
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const [currentLanguage, setCurrentLanguage] = useState('en');
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setCurrentLanguage(savedLanguage);
-
-    const handleLanguageChange = () => {
-      const newLanguage = localStorage.getItem('language') || 'en';
-      setCurrentLanguage(newLanguage);
-    };
-
-    window.addEventListener('storage', handleLanguageChange);
-    const interval = setInterval(handleLanguageChange, 100);
-
-    return () => {
-      window.removeEventListener('storage', handleLanguageChange);
-      clearInterval(interval);
-    };
-  }, []);
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -46,39 +27,32 @@ const LandingPage = () => {
 
       <main className="main-content">
         <HeroSection 
-          currentLanguage={currentLanguage}
           onNavigate={handleNavigation}
         />
 
         <EmiratesCoverageSection 
-          currentLanguage={currentLanguage}
+          onNavigate={navigate} 
         />
-
+        
         <SponsorshipPackagesSection 
-          currentLanguage={currentLanguage}
           onNavigate={handleNavigation}
         />
-
+        
         <BlockchainTransparencySection 
-          currentLanguage={currentLanguage}
-        />
-
-        <MarketplacePreviewSection 
-          currentLanguage={currentLanguage}
           onNavigate={handleNavigation}
         />
-
+        
+        <MarketplacePreviewSection 
+          onNavigate={handleNavigation}
+        />
+        
         <InvestorCallToActionSection 
-          currentLanguage={currentLanguage}
+          onNavigate={handleNavigation}
         />
-
-        <PartnerShowcaseSection 
-          currentLanguage={currentLanguage}
-        />
-
-        <FooterSection 
-          currentLanguage={currentLanguage}
-        />
+        
+        <PartnerShowcaseSection />
+        
+        <FooterSection />
       </main>
     </div>
   );

@@ -15,27 +15,27 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
   });
 
   const projectTypeOptions = [
-    { value: '', label: 'All Project Types' },
-    { value: 'mangrove', label: 'Mangrove Restoration' },
-    { value: 'solar', label: 'Solar Energy' },
-    { value: 'afforestation', label: 'Afforestation' }
+    { value: '', label: 'جميع أنواع المشاريع' },
+    { value: 'mangrove', label: 'استعادة المانغروف' },
+    { value: 'solar', label: 'الطاقة الشمسية' },
+    { value: 'afforestation', label: 'التشجير' }
   ];
 
   const locationOptions = [
-    { value: '', label: 'All Locations' },
-    { value: 'uae', label: 'UAE Projects', description: 'Local carbon offset projects' },
-    { value: 'abu-dhabi', label: 'Abu Dhabi' },
-    { value: 'dubai', label: 'Dubai' },
-    { value: 'sharjah', label: 'Sharjah' },
-    { value: 'ajman', label: 'Ajman' },
-    { value: 'umm-al-quwain', label: 'Umm Al Quwain' },
-    { value: 'ras-al-khaimah', label: 'Ras Al Khaimah' },
-    { value: 'fujairah', label: 'Fujairah' },
-    { value: 'international', label: 'International Projects', description: 'Global carbon offset projects' }
+    { value: '', label: 'جميع المواقع' },
+    { value: 'uae', label: 'مشاريع الإمارات', description: 'مشاريع تعويض الكربون المحلية' },
+    { value: 'abu-dhabi', label: 'أبو ظبي' },
+    { value: 'dubai', label: 'دبي' },
+    { value: 'sharjah', label: 'الشارقة' },
+    { value: 'ajman', label: 'عجمان' },
+    { value: 'umm-al-quwain', label: 'أم القيوين' },
+    { value: 'ras-al-khaimah', label: 'رأس الخيمة' },
+    { value: 'fujairah', label: 'الفجيرة' },
+    { value: 'international', label: 'مشاريع دولية', description: 'مشاريع تعويض الكربون العالمية' }
   ];
 
   const verificationOptions = [
-    { value: '', label: 'All Standards' },
+    { value: '', label: 'جميع المعايير' },
     { value: 'verra', label: 'Verra (VCS)' },
     { value: 'gold-standard', label: 'Gold Standard' },
     { value: 'climate-action', label: 'Climate Action Reserve' }
@@ -64,11 +64,11 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
   return (
     <>
       {/* Desktop Filters */}
-      <div className="hidden lg:block bg-card rounded-xl shadow-sm p-6 mb-6">
+      <div className="hidden lg:block bg-card rounded-xl shadow-sm p-6 mb-6" dir="rtl">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
             <Icon name="Filter" size={20} className="text-primary" />
-            Filter Credits
+            تصفية الاعتمادات
           </h3>
           {activeFilterCount > 0 && (
             <Button
@@ -78,28 +78,28 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
               iconPosition="left"
               onClick={handleReset}
             >
-              Clear All ({activeFilterCount})
+              مسح الكل ({activeFilterCount})
             </Button>
           )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <Select
-            label="Project Type"
+            label="نوع المشروع"
             options={projectTypeOptions}
             value={filters?.projectType}
             onChange={(value) => handleFilterChange('projectType', value)}
           />
           
           <Select
-            label="Location"
+            label="الموقع"
             options={locationOptions}
             value={filters?.location}
             onChange={(value) => handleFilterChange('location', value)}
           />
           
           <Select
-            label="Verification Standard"
+            label="معيار التحقق"
             options={verificationOptions}
             value={filters?.verificationStandard}
             onChange={(value) => handleFilterChange('verificationStandard', value)}
@@ -108,7 +108,7 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
           <div className="grid grid-cols-2 gap-4">
             <Input
               type="number"
-              label="Min Price"
+              label="الحد الأدنى للسعر"
               placeholder="Min"
               value={filters?.minPrice}
               onChange={(e) => handleFilterChange('minPrice', e.target.value)}
@@ -116,7 +116,7 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
             />
             <Input
               type="number"
-              label="Max Price"
+              label="الحد الأقصى للسعر"
               placeholder="Max"
               value={filters?.maxPrice}
               onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
@@ -136,14 +136,14 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
           onClick={() => setIsOpen(true)}
           className="w-full"
         >
-          Filter Credits {activeFilterCount > 0 && `(${activeFilterCount})`}
+          تصفية الاعتمادات {activeFilterCount > 0 && `(${activeFilterCount})`}
         </Button>
 
         {isOpen && (
-          <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" dir="rtl">
             <div className="bg-card rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold">Filter Credits</h3>
+                <h3 className="text-lg font-semibold">تصفية الاعتمادات</h3>
                 <Button
                   variant="ghost"
                   size="icon"
@@ -155,21 +155,21 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
 
               <div className="space-y-4">
                 <Select
-                  label="Project Type"
+                  label="نوع المشروع"
                   options={projectTypeOptions}
                   value={filters?.projectType}
                   onChange={(value) => handleFilterChange('projectType', value)}
                 />
                 
                 <Select
-                  label="Location"
+                  label="الموقع"
                   options={locationOptions}
                   value={filters?.location}
                   onChange={(value) => handleFilterChange('location', value)}
                 />
                 
                 <Select
-                  label="Verification Standard"
+                  label="معيار التحقق"
                   options={verificationOptions}
                   value={filters?.verificationStandard}
                   onChange={(value) => handleFilterChange('verificationStandard', value)}
@@ -177,7 +177,7 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
 
                 <div>
                   <label className="block text-sm font-medium text-muted-foreground mb-2">
-                    Price Range
+                    نطاق السعر
                   </label>
                   <div className="grid grid-cols-2 gap-4">
                     <Input
@@ -207,13 +207,13 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
                     setIsOpen(false);
                   }}
                 >
-                  Reset
+                  إعادة تعيين
                 </Button>
                 <Button
                   className="flex-1"
                   onClick={() => setIsOpen(false)}
                 >
-                  Apply Filters
+                  تطبيق الفلاتر
                 </Button>
               </div>
             </div>

@@ -1,0 +1,57 @@
+{
+  "common": {
+    "welcome": "Welcome to Izra Carbon Offset Platform",
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation completed successfully"
+  },
+  "landingPage": {
+    "heroTitle": "Empowering Sustainability Through Blockchain",
+    "heroSubtitle": "Join the movement to offset carbon emissions and support reforestation efforts in the UAE.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "marketplace": "Carbon Credit Marketplace",
+    "sponsorTree": "Sponsor a Tree",
+    "investNow": "Invest Now"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Izra",
+    "marketplace": "Marketplace",
+    "sponsor": "Sponsor a Tree",
+    "invest": "Invest",
+    "tokenomics": "Tokenomics",
+    "contact": "Contact Us"
+  },
+  "auth": {
+    "email": "Email Address",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "confirmPassword": "Confirm Password",
+    "agreeTerms": "I agree to the Terms of Service and Privacy Policy"
+  },
+  "validation": {
+    "required": "This field is required",
+    "emailInvalid": "Please enter a valid email address",
+    "passwordLength": "Password must be at least 8 characters",
+    "passwordsDontMatch": "Passwords don't match",
+    "acceptTerms": "You must accept the terms and conditions"
+  }
+}

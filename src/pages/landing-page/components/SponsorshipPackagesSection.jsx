@@ -2,30 +2,21 @@ import React from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
-const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
+const SponsorshipPackagesSection = ({ onNavigate }) => {
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      title: "Choose Your Impact",
-      subtitle: "Flexible Sponsorship Packages for Every Budget",
-      description: "Start your carbon offset journey with our curated mangrove tree sponsorship packages. Each tree sequesters approximately 12kg of CO₂ annually.",
-      customOption: "Custom Quantity Available",
-      viewAllCTA: "View All Packages",
-      currency: "AED"
-    },
-    ar: {
-      title: "اختر تأثيرك",
-      subtitle: "حزم رعاية مرنة لكل ميزانية",
-      description: "ابدأ رحلة تعويض الكربون الخاصة بك مع حزم رعاية أشجار المانغروف المنسقة لدينا. تعزل كل شجرة حوالي 12 كجم من ثاني أكسيد الكربون سنويًا.",
-      customOption: "كمية مخصصة متاحة",
-      viewAllCTA: "عرض جميع الحزم",
-      currency: "درهم"
-    }
+    title: "اختر تأثيرك",
+    subtitle: "حزم رعاية مرنة لكل ميزانية",
+    description: "ابدأ رحلة تعويض الكربون الخاصة بك مع حزم رعاية أشجار المانغروف المنسقة لدينا. تعزل كل شجرة حوالي 12 كجم من ثاني أكسيد الكربون سنويًا.",
+    customOption: "كمية مخصصة متاحة",
+    viewAllCTA: "عرض جميع الحزم",
+    currency: "درهم"
   };
 
   const packages = [
     {
       id: 1,
-      name: { en: "Starter Pack", ar: "حزمة البداية" },
+      name: "حزمة البداية",
       trees: 5,
       price: 50,
       co2: 60,
@@ -35,7 +26,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
     },
     {
       id: 2,
-      name: { en: "Growth Pack", ar: "حزمة النمو" },
+      name: "حزمة النمو",
       trees: 10,
       price: 95,
       co2: 120,
@@ -45,7 +36,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
     },
     {
       id: 3,
-      name: { en: "Impact Pack", ar: "حزمة التأثير" },
+      name: "حزمة التأثير",
       trees: 20,
       price: 180,
       co2: 240,
@@ -55,20 +46,18 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
     }
   ];
 
-  const text = content?.[currentLanguage];
-
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-background">
+    <section className="py-12 md:py-16 lg:py-20 bg-background" dir="rtl">
       <div className="container-safe">
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 md:mb-4">
-            {text?.title}
+            {content.title}
           </h2>
           <p className="text-lg md:text-xl text-primary font-semibold mb-4">
-            {text?.subtitle}
+            {content.subtitle}
           </p>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            {text?.description}
+            {content.description}
           </p>
         </div>
 
@@ -83,7 +72,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
               {pkg?.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <div className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                    {currentLanguage === 'en' ? 'Most Popular' : 'الأكثر شعبية'}
+                    الأكثر شعبية
                   </div>
                 </div>
               )}
@@ -93,13 +82,13 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
                   <Icon name={pkg?.icon} size={32} className={`text-${pkg?.color}`} />
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-                  {pkg?.name?.[currentLanguage]}
+                  {pkg.name}
                 </h3>
                 <div className="flex items-baseline justify-center gap-2">
                   <span className="text-3xl md:text-4xl font-bold text-foreground">
                     {pkg?.price}
                   </span>
-                  <span className="text-lg text-muted-foreground">{text?.currency}</span>
+                  <span className="text-lg text-muted-foreground">{content.currency}</span>
                 </div>
               </div>
 
@@ -108,7 +97,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
                   <Icon name="TreePine" size={20} className="text-success" />
                   <div className="flex-1">
                     <div className="text-sm text-muted-foreground">
-                      {currentLanguage === 'en' ? 'Mangrove Trees' : 'أشجار المانغروف'}
+                      أشجار المانغروف
                     </div>
                     <div className="text-lg font-bold text-foreground">{pkg?.trees}</div>
                   </div>
@@ -118,7 +107,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
                   <Icon name="Leaf" size={20} className="text-primary" />
                   <div className="flex-1">
                     <div className="text-sm text-muted-foreground">
-                      {currentLanguage === 'en' ? 'Annual CO₂ Offset' : 'تعويض ثاني أكسيد الكربون السنوي'}
+                      تعويض ثاني أكسيد الكربون السنوي
                     </div>
                     <div className="text-lg font-bold text-foreground">{pkg?.co2} kg</div>
                   </div>
@@ -128,10 +117,10 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
                   <Icon name="Award" size={20} className="text-accent" />
                   <div className="flex-1">
                     <div className="text-sm text-muted-foreground">
-                      {currentLanguage === 'en' ? 'Digital Certificate' : 'شهادة رقمية'}
+                      شهادة رقمية
                     </div>
                     <div className="text-lg font-bold text-foreground">
-                      {currentLanguage === 'en' ? 'Included' : 'متضمنة'}
+                      متضمنة
                     </div>
                   </div>
                 </div>
@@ -145,7 +134,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
                 onClick={() => onNavigate('/plant-tree-sponsorship')}
                 fullWidth
               >
-                {currentLanguage === 'en' ? 'Sponsor Now' : 'رعاية الآن'}
+                رعاية الآن
               </Button>
             </div>
           ))}
@@ -155,7 +144,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted mb-4">
             <Icon name="Info" size={20} className="text-primary" />
             <span className="text-sm md:text-base text-foreground font-medium">
-              {text?.customOption}
+              {content.customOption}
             </span>
           </div>
           <div>
@@ -166,7 +155,7 @@ const SponsorshipPackagesSection = ({ currentLanguage, onNavigate }) => {
               iconPosition="left"
               onClick={() => onNavigate('/plant-tree-sponsorship')}
             >
-              {text?.viewAllCTA}
+              {content.viewAllCTA}
             </Button>
           </div>
         </div>

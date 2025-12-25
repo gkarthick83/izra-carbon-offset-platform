@@ -3,30 +3,22 @@ import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import Image from '../../../components/AppImage';
 
-const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
+const MarketplacePreviewSection = ({ onNavigate }) => {
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      title: "Carbon Credit Marketplace",
-      subtitle: "Trade Verified Carbon Credits with Confidence",
-      description: "Access a diverse portfolio of verified carbon offset projects. Buy credits from UAE mangrove restoration, solar energy, and international afforestation initiatives.",
-      exploreCTA: "Explore Marketplace",
-      sellCTA: "Become a Seller"
-    },
-    ar: {
-      title: "سوق أرصدة الكربون",
-      subtitle: "تداول أرصدة الكربون الموثقة بثقة",
-      description: "الوصول إلى محفظة متنوعة من مشاريع تعويض الكربون الموثقة. شراء الأرصدة من استعادة المانغروف في الإمارات والطاقة الشمسية ومبادرات التشجير الدولية.",
-      exploreCTA: "استكشف السوق",
-      sellCTA: "كن بائعًا"
-    }
+    title: "سوق أرصدة الكربون",
+    subtitle: "تداول أرصدة الكربون الموثقة بثقة",
+    description: "الوصول إلى محفظة متنوعة من مشاريع تعويض الكربون الموثقة. شراء الأرصدة من استعادة المانغروف في الإمارات والطاقة الشمسية ومبادرات التشجير الدولية.",
+    exploreCTA: "استكشف السوق",
+    sellCTA: "كن بائعًا"
   };
 
   const projects = [
   {
     id: 1,
-    name: { en: "Abu Dhabi Mangrove Restoration", ar: "استعادة المانغروف في أبوظبي" },
-    type: { en: "Mangrove", ar: "المانغروف" },
-    location: { en: "Abu Dhabi, UAE", ar: "أبوظبي، الإمارات" },
+    name: "استعادة المانغروف في أبوظبي",
+    type: "المانغروف",
+    location: "أبوظبي، الإمارات",
     available: 500,
     price: 45,
     verified: "Verra",
@@ -36,9 +28,9 @@ const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
   },
   {
     id: 2,
-    name: { en: "Dubai Solar Farm Initiative", ar: "مبادرة مزرعة دبي الشمسية" },
-    type: { en: "Solar Energy", ar: "الطاقة الشمسية" },
-    location: { en: "Dubai, UAE", ar: "دبي، الإمارات" },
+    name: "مبادرة مزرعة دبي الشمسية",
+    type: "الطاقة الشمسية",
+    location: "دبي، الإمارات",
     available: 1200,
     price: 38,
     verified: "Gold Standard",
@@ -48,9 +40,9 @@ const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
   },
   {
     id: 3,
-    name: { en: "Amazon Rainforest Conservation", ar: "حفظ غابات الأمازون المطيرة" },
-    type: { en: "Afforestation", ar: "التشجير" },
-    location: { en: "Brazil", ar: "البرازيل" },
+    name: "حفظ غابات الأمازون المطيرة",
+    type: "التشجير",
+    location: "البرازيل",
     available: 800,
     price: 52,
     verified: "Verra",
@@ -60,20 +52,18 @@ const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
   }];
 
 
-  const text = content?.[currentLanguage];
-
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-muted/30">
+    <section className="py-12 md:py-16 lg:py-20 bg-muted/30" dir="rtl">
       <div className="container-safe">
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 md:mb-4">
-            {text?.title}
+            {content.title}
           </h2>
           <p className="text-lg md:text-xl text-primary font-semibold mb-4">
-            {text?.subtitle}
+            {content.subtitle}
           </p>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            {text?.description}
+            {content.description}
           </p>
         </div>
 
@@ -104,35 +94,35 @@ const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
 
               <div className="p-4 md:p-6">
                 <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 line-clamp-2">
-                  {project?.name?.[currentLanguage]}
+                  {project.name}
                 </h3>
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Icon name="Tag" size={16} className="text-primary" />
-                    <span>{project?.type?.[currentLanguage]}</span>
+                    <span>{project.type}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Icon name="MapPin" size={16} className="text-primary" />
-                    <span>{project?.location?.[currentLanguage]}</span>
+                    <span>{project.location}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-4 border-t border-border">
                   <div>
                     <div className="text-xs text-muted-foreground mb-1">
-                      {currentLanguage === 'en' ? 'Available' : 'متاح'}
+                      متاح
                     </div>
                     <div className="text-lg font-bold text-foreground">
-                      {project?.available} {currentLanguage === 'en' ? 'tonnes' : 'طن'}
+                      {project.available} طن
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-muted-foreground mb-1">
-                      {currentLanguage === 'en' ? 'Price/tonne' : 'السعر/طن'}
+                      السعر/طن
                     </div>
                     <div className="text-lg font-bold text-primary">
-                      {project?.price} {currentLanguage === 'en' ? 'AED' : 'درهم'}
+                      {project.price} درهم
                     </div>
                   </div>
                 </div>
@@ -146,7 +136,7 @@ const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
                 fullWidth
                 className="mt-4">
 
-                  {currentLanguage === 'en' ? 'View Details' : 'عرض التفاصيل'}
+                  عرض التفاصيل
                 </Button>
               </div>
             </div>
@@ -161,7 +151,7 @@ const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
             iconPosition="left"
             onClick={() => onNavigate('/carbon-credit-marketplace')}>
 
-            {text?.exploreCTA}
+            {content.exploreCTA}
           </Button>
           <Button
             variant="outline"
@@ -170,7 +160,7 @@ const MarketplacePreviewSection = ({ currentLanguage, onNavigate }) => {
             iconPosition="left"
             onClick={() => onNavigate('/seller-portal')}>
 
-            {text?.sellCTA}
+            {content.sellCTA}
           </Button>
         </div>
       </div>

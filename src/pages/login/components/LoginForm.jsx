@@ -29,7 +29,7 @@ export default function LoginForm() {
       // Navigation is handled by RoleDashboardRouter component
       navigate('/dashboard');
     } catch (err) {
-      setError(err?.message || 'An error occurred during login');
+      setError(err?.message || 'حدث خطأ أثناء تسجيل الدخول');
       setLoading(false);
     }
   };
@@ -40,10 +40,10 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto" dir="rtl">
       <div className="bg-white rounded-xl shadow-lg p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Sign in to IZRA Platform
+          تسجيل الدخول إلى منصة IZRA
         </h2>
 
         {error && (
@@ -55,7 +55,7 @@ export default function LoginForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-              Email Address
+              البريد الإلكتروني
             </label>
             <Input
               id="email"
@@ -70,14 +70,14 @@ export default function LoginForm() {
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-              Password
+              كلمة المرور
             </label>
             <Input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e?.target?.value)}
-              placeholder="Enter your password"
+              placeholder="أدخل كلمة المرور"
               required
               disabled={loading}
             />
@@ -88,32 +88,32 @@ export default function LoginForm() {
             className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
             disabled={loading}
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? 'جارٍ تسجيل الدخول...' : 'تسجيل الدخول'}
           </Button>
         </form>
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
-            Don't have an account?{' '}
+            ليس لديك حساب؟{' '}
             <button
               onClick={() => navigate('/signup')}
               className="text-emerald-600 hover:text-emerald-700 font-medium"
             >
-              Sign Up
+              إنشاء حساب
             </button>
           </p>
         </div>
 
         {/* Demo Credentials Section */}
         <div className="mt-8 pt-6 border-t border-gray-200">
-          <p className="text-sm font-medium text-gray-700 mb-3">Demo Credentials:</p>
+          <p className="text-sm font-medium text-gray-700 mb-3">بيانات التجريبية:</p>
           <div className="space-y-2">
             <button
               type="button"
               onClick={() => handleDemoCredentials('admin@izra.ae', 'admin123')}
               className="w-full text-left px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <span className="font-medium text-gray-900">Admin:</span>{' '}
+              <span className="font-medium text-gray-900">مدير:</span>{' '}
               <span className="text-gray-600">admin@izra.ae / admin123</span>
             </button>
             <button
@@ -121,7 +121,7 @@ export default function LoginForm() {
               onClick={() => handleDemoCredentials('seller@izra.ae', 'seller123')}
               className="w-full text-left px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <span className="font-medium text-gray-900">Seller:</span>{' '}
+              <span className="font-medium text-gray-900">بائع:</span>{' '}
               <span className="text-gray-600">seller@izra.ae / seller123</span>
             </button>
             <button
@@ -129,7 +129,7 @@ export default function LoginForm() {
               onClick={() => handleDemoCredentials('buyer@izra.ae', 'buyer123')}
               className="w-full text-left px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <span className="font-medium text-gray-900">Buyer:</span>{' '}
+              <span className="font-medium text-gray-900">مشتري:</span>{' '}
               <span className="text-gray-600">buyer@izra.ae / buyer123</span>
             </button>
             <button
@@ -137,7 +137,7 @@ export default function LoginForm() {
               onClick={() => handleDemoCredentials('investor@izra.ae', 'investor123')}
               className="w-full text-left px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <span className="font-medium text-gray-900">Investor:</span>{' '}
+              <span className="font-medium text-gray-900">مستثمر:</span>{' '}
               <span className="text-gray-600">investor@izra.ae / investor123</span>
             </button>
             <button
@@ -145,7 +145,7 @@ export default function LoginForm() {
               onClick={() => handleDemoCredentials('sponsor@izra.ae', 'sponsor123')}
               className="w-full text-left px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <span className="font-medium text-gray-900">Sponsor:</span>{' '}
+              <span className="font-medium text-gray-900">راعي:</span>{' '}
               <span className="text-gray-600">sponsor@izra.ae / sponsor123</span>
             </button>
           </div>

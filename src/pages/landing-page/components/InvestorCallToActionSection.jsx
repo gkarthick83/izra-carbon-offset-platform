@@ -3,38 +3,25 @@ import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import Image from '../../../components/AppImage';
 
-const InvestorCallToActionSection = ({ currentLanguage, onNavigate }) => {
+const InvestorCallToActionSection = ({ onNavigate }) => {
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      title: "Invest in IZRA Tokens",
-      subtitle: "Join the Future of Environmental Finance",
-      description: "IZRA tokens power our ecosystem with exclusive benefits including payment discounts, staking rewards, and revenue sharing. Be part of the UAE's carbon offset revolution.",
-      learnMoreCTA: "Learn About IZRA",
-      benefits: [
-      { icon: "Percent", text: "Up to 10% payment discount" },
-      { icon: "TrendingUp", text: "Staking rewards & revenue sharing" },
-      { icon: "Shield", text: "Blockchain-secured ownership" },
-      { icon: "Users", text: "Exclusive investor community" }]
-
-    },
-    ar: {
-      title: "استثمر في رموز IZRA",
-      subtitle: "انضم إلى مستقبل التمويل البيئي",
-      description: "تدعم رموز IZRA نظامنا البيئي بمزايا حصرية بما في ذلك خصومات الدفع ومكافآت التخزين ومشاركة الإيرادات. كن جزءًا من ثورة تعويض الكربون في الإمارات.",
-      learnMoreCTA: "تعرف على IZRA",
-      benefits: [
+    title: "استثمر في رموز IZRA",
+    subtitle: "انضم إلى مستقبل التمويل البيئي",
+    description: "تدعم رموز IZRA نظامنا البيئي بمزايا حصرية بما في ذلك خصومات الدفع ومكافآت التخزين ومشاركة الإيرادات. كن جزءًا من ثورة تعويض الكربون في الإمارات.",
+    learnMoreCTA: "تعرف على IZRA",
+    benefits: [
       { icon: "Percent", text: "خصم دفع يصل إلى 10٪" },
       { icon: "TrendingUp", text: "مكافآت التخزين ومشاركة الإيرادات" },
       { icon: "Shield", text: "ملكية محمية بالبلوكشين" },
-      { icon: "Users", text: "مجتمع المستثمرين الحصري" }]
-
-    }
+      { icon: "Users", text: "مجتمع المستثمرين الحصري" }
+    ]
   };
 
-  const text = content?.[currentLanguage];
+  const text = content;
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-primary/10 via-background to-accent/10">
+    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-primary/10 via-background to-accent/10" dir="rtl">
       <div className="container-safe">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 md:space-y-8">
@@ -42,22 +29,22 @@ const InvestorCallToActionSection = ({ currentLanguage, onNavigate }) => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-4">
                 <Icon name="Coins" size={20} className="text-accent" />
                 <span className="text-sm md:text-base font-medium text-accent">
-                  {currentLanguage === 'en' ? 'IZRA Token' : 'رمز IZRA'}
+                  رمز IZRA
                 </span>
               </div>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 md:mb-4">
-                {text?.title}
+                {content.title}
               </h2>
               <p className="text-lg md:text-xl text-primary font-semibold mb-4">
-                {text?.subtitle}
+                {content.subtitle}
               </p>
               <p className="text-base md:text-lg text-muted-foreground">
-                {text?.description}
+                {content.description}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {text?.benefits?.map((benefit, index) =>
+              {content.benefits?.map((benefit, index) =>
               <div
                 key={index}
                 className="flex items-start gap-3 p-4 bg-card rounded-xl shadow-md">
@@ -81,7 +68,7 @@ const InvestorCallToActionSection = ({ currentLanguage, onNavigate }) => {
                 onClick={() => onNavigate?.('/learn-about-izra')}
                 className="w-full sm:w-auto">
 
-                {text?.learnMoreCTA}
+                {content.learnMoreCTA}
               </Button>
               <Button
                 variant="outline"
@@ -91,7 +78,7 @@ const InvestorCallToActionSection = ({ currentLanguage, onNavigate }) => {
                 onClick={() => onNavigate?.('/tokenomics')}
                 className="w-full sm:w-auto">
 
-                {currentLanguage === 'en' ? 'View Tokenomics' : 'عرض اقتصاديات الرمز'}
+                عرض اقتصاديات الرمز
               </Button>
             </div>
 
@@ -99,21 +86,21 @@ const InvestorCallToActionSection = ({ currentLanguage, onNavigate }) => {
               <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-foreground">1,250+</div>
                 <div className="text-xs md:text-sm text-muted-foreground">
-                  {currentLanguage === 'en' ? 'Token Holders' : 'حاملي الرموز'}
+                  حاملي الرموز
                 </div>
               </div>
               <div className="w-px h-12 bg-border" />
               <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-foreground">AED 2.5M</div>
                 <div className="text-xs md:text-sm text-muted-foreground">
-                  {currentLanguage === 'en' ? 'Market Cap' : 'القيمة السوقية'}
+                  القيمة السوقية
                 </div>
               </div>
               <div className="w-px h-12 bg-border" />
               <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-success">+18%</div>
                 <div className="text-xs md:text-sm text-muted-foreground">
-                  {currentLanguage === 'en' ? 'APY Staking' : 'عائد التخزين السنوي'}
+                  عائد التخزين السنوي
                 </div>
               </div>
             </div>
@@ -136,7 +123,7 @@ const InvestorCallToActionSection = ({ currentLanguage, onNavigate }) => {
                     </div>
                     <div>
                       <div className="text-sm text-muted-foreground">
-                        {currentLanguage === 'en' ? 'Token Price' : 'سعر الرمز'}
+                        سعر الرمز
                       </div>
                       <div className="text-xl font-bold text-foreground">2.00 AED</div>
                     </div>
@@ -150,13 +137,13 @@ const InvestorCallToActionSection = ({ currentLanguage, onNavigate }) => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-muted/50 rounded-xl">
                     <div className="text-xs text-muted-foreground mb-1">
-                      {currentLanguage === 'en' ? 'Total Supply' : 'الإمداد الكلي'}
+                      الإمداد الكلي
                     </div>
                     <div className="text-lg font-bold text-foreground">10M</div>
                   </div>
                   <div className="p-4 bg-muted/50 rounded-xl">
                     <div className="text-xs text-muted-foreground mb-1">
-                      {currentLanguage === 'en' ? 'Circulating' : 'المتداول'}
+                      المتداول
                     </div>
                     <div className="text-lg font-bold text-foreground">3.2M</div>
                   </div>

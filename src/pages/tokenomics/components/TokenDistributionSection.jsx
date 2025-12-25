@@ -1,37 +1,21 @@
 import React from 'react';
 import Icon from '../../../components/AppIcon';
 
-const TokenDistributionSection = ({ currentLanguage }) => {
+const TokenDistributionSection = () => {
+  // Hardcoded Arabic content
   const content = {
-    en: {
-      title: "Token Distribution",
-      subtitle: "Fair Allocation Across Stakeholders",
-      totalSupply: "Total Supply: 1,000,000,000 IZRA",
-      distribution: [
-        { category: "Public Sale", percentage: 30, amount: "300,000,000", color: "bg-blue-500", description: "Available for public purchase" },
-        { category: "Ecosystem Fund", percentage: 25, amount: "250,000,000", color: "bg-green-500", description: "Platform development & rewards" },
-        { category: "Team & Advisors", percentage: 15, amount: "150,000,000", color: "bg-purple-500", description: "4-year vesting schedule" },
-        { category: "Strategic Partners", percentage: 15, amount: "150,000,000", color: "bg-amber-500", description: "Partnerships & integrations" },
-        { category: "Liquidity Pool", percentage: 10, amount: "100,000,000", color: "bg-teal-500", description: "DEX liquidity provision" },
-        { category: "Reserve", percentage: 5, amount: "50,000,000", color: "bg-red-500", description: "Emergency fund" }
-      ]
-    },
-    ar: {
-      title: "توزيع الرموز",
-      subtitle: "توزيع عادل عبر أصحاب المصلحة",
-      totalSupply: "إجمالي العرض: 1,000,000,000 إزرع",
-      distribution: [
-        { category: "البيع العام", percentage: 30, amount: "300,000,000", color: "bg-blue-500", description: "متاح للشراء العام" },
-        { category: "صندوق النظام البيئي", percentage: 25, amount: "250,000,000", color: "bg-green-500", description: "تطوير المنصة والمكافآت" },
-        { category: "الفريق والمستشارون", percentage: 15, amount: "150,000,000", color: "bg-purple-500", description: "جدول استحقاق 4 سنوات" },
-        { category: "الشركاء الاستراتيجيون", percentage: 15, amount: "150,000,000", color: "bg-amber-500", description: "الشراكات والتكاملات" },
-        { category: "مجمع السيولة", percentage: 10, amount: "100,000,000", color: "bg-teal-500", description: "توفير سيولة DEX" },
-        { category: "الاحتياطي", percentage: 5, amount: "50,000,000", color: "bg-red-500", description: "صندوق الطوارئ" }
-      ]
-    }
+    title: "توزيع الرموز",
+    subtitle: "توزيع عادل عبر أصحاب المصلحة",
+    totalSupply: "إجمالي العرض: 1,000,000,000 إزرع",
+    distribution: [
+      { category: "البيع العام", percentage: 30, amount: "300,000,000", color: "bg-blue-500", description: "متاح للشراء العام" },
+      { category: "صندوق النظام البيئي", percentage: 25, amount: "250,000,000", color: "bg-green-500", description: "تطوير المنصة والمكافآت" },
+      { category: "الفريق والمستشارون", percentage: 15, amount: "150,000,000", color: "bg-purple-500", description: "جدول استحقاق 4 سنوات" },
+      { category: "الشركاء الاستراتيجيون", percentage: 15, amount: "150,000,000", color: "bg-amber-500", description: "الشراكات والتكاملات" },
+      { category: "مجمع السيولة", percentage: 10, amount: "100,000,000", color: "bg-teal-500", description: "توفير سيولة DEX" },
+      { category: "الاحتياطي", percentage: 5, amount: "50,000,000", color: "bg-red-500", description: "صندوق الطوارئ" }
+    ]
   };
-
-  const text = content?.[currentLanguage];
   const [activeIndex, setActiveIndex] = React.useState(null);
 
   const COLORS = [
@@ -53,22 +37,22 @@ const TokenDistributionSection = ({ currentLanguage }) => {
   ];
 
   return (
-    <section className="py-8 w-full">
+    <section className="py-8 w-full" dir="rtl">
       <div className="w-full px-4">
         <div className="w-full mb-8 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-2">
-            {text?.title}
+            {content.title}
           </h2>
           <p className="text-lg text-muted-foreground mb-1">
-            {text?.subtitle}
+            {content.subtitle}
           </p>
           <p className="text-lg text-muted-foreground">
-            {text?.totalSupply}
+            {content.totalSupply}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {text?.distribution?.map((item, index) => (
+          {content.distribution?.map((item, index) => (
             <div 
               key={index}
               className="p-4 rounded-lg border border-border hover:border-primary/30 hover:bg-muted/5 transition-colors"

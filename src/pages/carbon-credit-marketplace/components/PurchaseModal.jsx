@@ -10,11 +10,11 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
   const [errors, setErrors] = useState({});
 
   const paymentMethodOptions = [
-    { value: '', label: 'Select payment method' },
-    { value: 'aed', label: 'AED (Bank Transfer)', description: 'Pay with UAE Dirhams' },
-    { value: 'usdt', label: 'USDT (Tether)', description: 'Pay with USDT stablecoin' },
-    { value: 'usdc', label: 'USDC (USD Coin)', description: 'Pay with USDC stablecoin' },
-    { value: 'izra', label: 'IZRA Tokens', description: 'Get 10% discount with IZRA' }
+    { value: '', label: 'اختر طريقة الدفع' },
+    { value: 'aed', label: 'د.إ (تحويل بنكي)', description: 'ادفع بالدرهم الإماراتي' },
+    { value: 'usdt', label: 'USDT (Tether)', description: 'ادفع بعملة USDT المستقرة' },
+    { value: 'usdc', label: 'USDC (USD Coin)', description: 'ادفع بعملة USDC المستقرة' },
+    { value: 'izra', label: 'رموز IZRA', description: 'احصل على خصم 10% مع IZRA' }
   ];
 
   const calculateTotal = () => {
@@ -30,19 +30,19 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
   };
 
   const formatCurrency = (amount) => {
-    if (paymentMethod === 'aed') return `AED ${amount?.toFixed(2)}`;
+    if (paymentMethod === 'aed') return `د.إ ${amount?.toFixed(2)}`;
     if (paymentMethod === 'usdt') return `${amount?.toFixed(2)} USDT`;
     if (paymentMethod === 'usdc') return `${amount?.toFixed(2)} USDC`;
     if (paymentMethod === 'izra') return `${amount?.toFixed(2)} IZRA`;
-    return `AED ${amount?.toFixed(2)}`;
+    return `د.إ ${amount?.toFixed(2)}`;
   };
 
   const handleQuantityChange = (e) => {
     const value = parseInt(e?.target?.value) || 0;
     if (value > credit?.availableTonnage) {
-      setErrors({ quantity: `Maximum available: ${credit?.availableTonnage} tonnes` });
+      setErrors({ quantity: `الحد الأقصى المتاح: ${credit?.availableTonnage} طن` });
     } else if (value < 1) {
-      setErrors({ quantity: 'Minimum quantity is 1 tonne' });
+      setErrors({ quantity: 'الحد الأدنى للكمية هو 1 طن' });
     } else {
       setErrors({});
       setQuantity(value);
@@ -51,11 +51,11 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
 
   const handleConfirm = () => {
     if (!paymentMethod) {
-      setErrors({ payment: 'Please select a payment method' });
+      setErrors({ payment: 'يرجى اختيار طريقة الدفع' });
       return;
     }
     if (quantity < 1 || quantity > credit?.availableTonnage) {
-      setErrors({ quantity: 'Invalid quantity' });
+      setErrors({ quantity: 'كمية غير صالحة' });
       return;
     }
 
@@ -76,12 +76,12 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
         className="fixed inset-0 bg-background/80 backdrop-blur-sm z-[300]"
         onClick={onClose}
       />
-      <div className="fixed inset-0 z-[301] flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-[301] flex items-center justify-center p-4" dir="rtl">
         <div className="bg-card rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           {/* Header */}
           <div className="sticky top-0 bg-card border-b border-border p-4 md:p-6 flex items-center justify-between">
             <h2 className="text-xl md:text-2xl font-semibold text-foreground">
-              Purchase Carbon Credits
+              شراء اعتمادات الكربون
             </h2>
             <Button
               variant="ghost"
@@ -110,20 +110,20 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
 
             {/* Quantity Input */}
             <Input
-              label="Quantity (Tonnes)"
+              label="الكمية (أطنان)"
               type="number"
               value={quantity}
               onChange={handleQuantityChange}
               min="1"
               max={credit?.availableTonnage}
               error={errors?.quantity}
-              description={`Available: ${credit?.availableTonnage} tonnes`}
+              description={`المتاح: ${credit?.availableTonnage} طن`}
               required
             />
 
             {/* Payment Method */}
             <Select
-              label="Payment Method"
+              label="طريقة الدفع"
               options={paymentMethodOptions}
               value={paymentMethod}
               onChange={setPaymentMethod}
@@ -134,15 +134,15 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
             {/* Price Breakdown */}
             {paymentMethod && (
               <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                <h4 className="font-semibold text-foreground mb-3">Price Breakdown</h4>
+                <h4 className="font-semibold text-foreground mb-3">تفصيل السعر</h4>
                 
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Subtotal ({quantity} × {formatCurrency(credit?.pricePerTonne)})</span>
+                  <span className="text-muted-foreground">المجموع الفرعي ({quantity} × {formatCurrency(credit?.pricePerTonne)})</span>
                   <span className="font-medium text-foreground data-text">{formatCurrency(totals?.subtotal)}</span>
                 </div>
 
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Platform Fee (2%)</span>
+                  <span className="text-muted-foreground">رسوم المنصة (2%)</span>
                   <span className="font-medium text-foreground data-text">{formatCurrency(totals?.platformFee)}</span>
                 </div>
 
@@ -150,14 +150,14 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
                   <div className="flex justify-between text-sm text-success">
                     <span className="flex items-center gap-1">
                       <Icon name="Tag" size={16} />
-                      IZRA Discount (10%)
+                      خصم IZRA (10%)
                     </span>
                     <span className="font-medium data-text">-{formatCurrency(totals?.discount)}</span>
                   </div>
                 )}
 
                 <div className="pt-3 border-t border-border flex justify-between">
-                  <span className="font-semibold text-foreground">Total</span>
+                  <span className="font-semibold text-foreground">الإجمالي</span>
                   <span className="text-xl font-bold text-primary data-text">{formatCurrency(totals?.total)}</span>
                 </div>
               </div>
@@ -167,9 +167,9 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
             <div className="flex gap-3 p-4 bg-primary/10 border border-primary/20 rounded-lg">
               <Icon name="Info" size={20} className="text-primary flex-shrink-0 mt-0.5" />
               <div className="text-sm text-foreground">
-                <p className="font-medium mb-1">NFT Certificate Included</p>
+                <p className="font-medium mb-1">شهادة NFT مضمنة</p>
                 <p className="text-muted-foreground">
-                  Your carbon credits will be minted as NFTs on our blockchain ESG layer for transparency and verification.
+                  سيتم إنشاء اعتمادات الكربون الخاصة بك كـ NFTs على طبقة ESG الخاصة ببلوكشيننا للشفافية والتحقق.
                 </p>
               </div>
             </div>
@@ -181,7 +181,7 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
                 fullWidth
                 onClick={onClose}
               >
-                Cancel
+                إلغاء
               </Button>
               <Button
                 variant="default"
@@ -191,7 +191,7 @@ const PurchaseModal = ({ credit, onClose, onConfirm }) => {
                 onClick={handleConfirm}
                 disabled={!paymentMethod || !!errors?.quantity}
               >
-                Confirm Purchase
+                تأكيد الشراء
               </Button>
             </div>
           </div>

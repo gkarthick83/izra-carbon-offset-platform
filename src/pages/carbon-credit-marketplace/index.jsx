@@ -28,131 +28,131 @@ const CarbonCreditMarketplace = () => {
   const mockCredits = [
     {
       id: 'CC001',
-      projectName: 'Abu Dhabi Mangrove Restoration Initiative',
-      projectImage: "https://images.unsplash.com/photo-1594336422995-76c2f7aff7f0",
-      projectImageAlt: 'Aerial view of lush green mangrove forest with winding waterways in Abu Dhabi coastal area during golden hour',
+      projectName: 'مبادرة استعادة أشجار المانغروف في أبو ظبي',
+      projectImage: "https://images.unsplash.com/photo-1594336422995-76c2f7Aff7f0",
+      projectImageAlt: 'منظر جوي لغابة المانغروف الخضراء المورقة مع مسارات مائية متعرجة في منطقة أبو ظبي الساحلية خلال الساعة الذهبية',
       projectType: 'mangrove',
-      location: 'Abu Dhabi, UAE',
+      location: 'أبو ظبي، الإمارات',
       isUAE: true,
       availableTonnage: 5000,
       pricePerTonne: 85,
-      currency: 'AED',
+      currency: 'د.إ',
       verificationStandard: 'Verra (VCS)',
       registryId: 'VCS-2024-AUH-001',
       verificationDate: '2024-11-15',
-      description: 'Large-scale mangrove restoration project along Abu Dhabi coastline, protecting marine biodiversity and sequestering carbon through native species planting and ecosystem rehabilitation.'
+      description: 'مشروع واسع النطاق لاستعادة أشجار المانغروف على طول ساحل أبو ظبي، حماية التنوع البيولوجي البحري واحتجاز الكربون من خلال زراعة الأنواع الأصلية وإعادة تأهيل النظام البيئي.'
     },
     {
       id: 'CC002',
-      projectName: 'Dubai Solar Farm Carbon Offset Program',
+      projectName: 'برنامج تعويض الكربون لمزرعة شمسية في دبي',
       projectImage: "https://img.rocket.new/generatedImages/rocket_gen_img_1e437e970-1765125660235.png",
-      projectImageAlt: 'Vast solar panel array installation in Dubai desert with modern city skyline visible in background under clear blue sky',
+      projectImageAlt: 'تركيبة ألواح شمسية واسعة في صحراء دبي مع أفق المدينة الحديث مرئي في الخلفية تحت سماء زرقاء صافية',
       projectType: 'solar',
-      location: 'Dubai, UAE',
+      location: 'دبي، الإمارات',
       isUAE: true,
       availableTonnage: 8500,
       pricePerTonne: 72,
-      currency: 'AED',
+      currency: 'د.إ',
       verificationStandard: 'Gold Standard',
       registryId: 'GS-2024-DXB-003',
       verificationDate: '2024-10-28',
-      description: 'Renewable energy project generating clean electricity through solar photovoltaic technology, reducing fossil fuel dependency and offsetting carbon emissions in Dubai region.'
+      description: 'مشروع طاقة متجددة يولد كهرباء نظيفة من خلال تقنية الطاقة الشمسية الكهروضوئية، يقلل من الاعتماد على الوقود الأحفوري ويعوض انبعاثات الكربون في منطقة دبي.'
     },
     {
       id: 'CC003',
-      projectName: 'Sharjah Coastal Afforestation Project',
+      projectName: 'مشروع التشجير الساحلي في الشارقة',
       projectImage: "https://images.unsplash.com/photo-1728352874964-37c22ff467bb",
-      projectImageAlt: 'Dense green forest with tall trees and undergrowth in Sharjah coastal region with sunlight filtering through canopy',
+      projectImageAlt: 'غابة خضراء كثيفة بأشجار طويلة ونمو سفلي في منطقة الشارقة الساحلية مع ضوء الشمس يتسلل عبر المظلة',
       projectType: 'afforestation',
-      location: 'Sharjah, UAE',
+      location: 'الشارقة، الإمارات',
       isUAE: true,
       availableTonnage: 3200,
       pricePerTonne: 68,
-      currency: 'AED',
+      currency: 'د.إ',
       verificationStandard: 'Verra (VCS)',
       registryId: 'VCS-2024-SHJ-002',
       verificationDate: '2024-12-05',
-      description: 'Coastal afforestation initiative planting native tree species to combat desertification, enhance biodiversity, and create carbon sinks in Sharjah emirate.'
+      description: 'مبادرة التشجير الساحلي تزرع أنواع الأشجار الأصلية لمكافحة التصحر، تعزيز التنوع البيولوجي، وإنشاء بالوعات الكربون في إمارة الشارقة.'
     },
     {
       id: 'CC004',
-      projectName: 'Amazon Rainforest Conservation Alliance',
+      projectName: 'تحالف حفظ غابة الأمازون المطيرة',
       projectImage: "https://images.unsplash.com/photo-1561389745-97596a161957",
-      projectImageAlt: 'Dense Amazon rainforest canopy with vibrant green vegetation and mist rising from tropical forest floor at dawn',
+      projectImageAlt: 'مظلة غابة الأمازون المطيرة مع نباتات خضراء زاهية والضباب يرتفع من أرضية الغابة الاستوائية عند الفجر',
       projectType: 'afforestation',
-      location: 'Brazil',
+      location: 'البرازيل',
       isUAE: false,
       availableTonnage: 12000,
       pricePerTonne: 55,
-      currency: 'USD',
+      currency: 'دولار أمريكي',
       verificationStandard: 'Verra (VCS)',
       registryId: 'VCS-2024-BRA-045',
       verificationDate: '2024-09-20',
-      description: 'International rainforest conservation project protecting existing forest ecosystems and preventing deforestation in Brazilian Amazon region through community partnerships.'
+      description: 'مشروع حفظ الغابة المطيرة الدولي يحمي أنظمة الغابات الموجودة ويمنع إزالة الغابات في منطقة الأمازون البرازيلية من خلال شراكات المجتمع.'
     },
     {
       id: 'CC005',
-      projectName: 'Ras Al Khaimah Mangrove Nursery',
+      projectName: 'مشغل أشجار المانغروف في رأس الخيمة',
       projectImage: "https://img.rocket.new/generatedImages/rocket_gen_img_19c5e35eb-1765270103802.png",
-      projectImageAlt: 'Young mangrove seedlings growing in nursery with coastal waters and mountains of Ras Al Khaimah in background',
+      projectImageAlt: 'شتلات المانغروف الصغيرة تنمو في المشغل مع المياه الساحلية وجبال رأس الخيمة في الخلفية',
       projectType: 'mangrove',
-      location: 'Ras Al Khaimah, UAE',
+      location: 'رأس الخيمة، الإمارات',
       isUAE: true,
       availableTonnage: 2800,
       pricePerTonne: 78,
-      currency: 'AED',
+      currency: 'د.إ',
       verificationStandard: 'Climate Action Reserve',
       registryId: 'CAR-2024-RAK-001',
       verificationDate: '2024-11-30',
-      description: 'Mangrove nursery and restoration project establishing new coastal ecosystems in Ras Al Khaimah, supporting marine life and carbon sequestration.'
+      description: 'مشروع مشغل واستعادة أشجار المانغروف ينشئ أنظمة ساحلية جديدة في رأس الخيمة، يدعم الحياة البحرية واحتجاز الكربون.'
     },
     {
       id: 'CC006',
-      projectName: 'Kenya Wind Energy Carbon Credits',
+      projectName: 'اعتمادات طاقة الرياح في كينيا',
       projectImage: "https://images.unsplash.com/photo-1694551073674-f8809f1685f4",
-      projectImageAlt: 'Modern wind turbines standing tall against orange sunset sky in Kenyan landscape with rolling hills',
+      projectImageAlt: 'توربينات رياح حديثة تقف شامخة ضد سماء برتقالية غروب الشمس في منظر كيني مع تلال متدرجة',
       projectType: 'solar',
-      location: 'Kenya',
+      location: 'كينيا',
       isUAE: false,
       availableTonnage: 6500,
       pricePerTonne: 48,
-      currency: 'USD',
+      currency: 'دولار أمريكي',
       verificationStandard: 'Gold Standard',
       registryId: 'GS-2024-KEN-012',
       verificationDate: '2024-10-15',
-      description: 'Wind energy project generating renewable electricity in Kenya, displacing fossil fuel power generation and providing clean energy to local communities.'
+      description: 'مشروع طاقة الرياح يولد كهرباء متجددة في كينيا، يحل محل توليد الطاقة من الوقود الأحفوري ويوفر طاقة نظيفة للمجتمعات المحلية.'
     },
     {
       id: 'CC007',
-      projectName: 'Fujairah Mountain Reforestation',
+      projectName: 'إعادة تشجير جبال الفجيرة',
       projectImage: "https://img.rocket.new/generatedImages/rocket_gen_img_1e60a098e-1765893427294.png",
-      projectImageAlt: 'Mountain slopes in Fujairah with newly planted trees and terraced landscape restoration work visible',
+      projectImageAlt: 'منحدرات الجبال في الفجيرة مع أشجار مزروعة حديثا ومنظر تراسيب استعادة المناظر الطبيعية مرئي',
       projectType: 'afforestation',
-      location: 'Fujairah, UAE',
+      location: 'الفجيرة، الإمارات',
       isUAE: true,
       availableTonnage: 1500,
       pricePerTonne: 82,
-      currency: 'AED',
+      currency: 'د.إ',
       verificationStandard: 'Verra (VCS)',
       registryId: 'VCS-2024-FUJ-001',
       verificationDate: '2024-12-10',
-      description: 'Mountain reforestation project in Fujairah emirate planting drought-resistant native species to prevent soil erosion and sequester atmospheric carbon.'
+      description: 'مشروع إعادة تشجير الجبال في إمارة الفجيرة يزرع أنواعاً أصلية مقاومة للجفاف لمنع تآكل التربة واحتجاز الكربون الجوي.'
     },
     {
       id: 'CC008',
-      projectName: 'Indonesia Peatland Restoration',
+      projectName: 'مشروع استعادة أراضي الخث في إندونيسيا',
       projectImage: "https://img.rocket.new/generatedImages/rocket_gen_img_1899a7a21-1765001145505.png",
-      projectImageAlt: 'Restored peatland ecosystem in Indonesia with water channels and regenerating vegetation under tropical sky',
+      projectImageAlt: 'نظام أراضي الخث المستعاد في إندونيسيا مع قنوات مائية ونباتات متجددة تحت سماء استوائية',
       projectType: 'mangrove',
-      location: 'Indonesia',
+      location: 'إندونيسيا',
       isUAE: false,
       availableTonnage: 9200,
       pricePerTonne: 52,
-      currency: 'USD',
+      currency: 'دولار أمريكي',
       verificationStandard: 'Verra (VCS)',
       registryId: 'VCS-2024-IDN-078',
       verificationDate: '2024-08-25',
-      description: 'Peatland restoration and conservation project in Indonesia preventing carbon emissions from degraded peatlands and restoring critical wetland ecosystems.'
+      description: 'مشروع استعادة وحفظ أراضي الخث في إندونيسيا يمنع انبعاثات الكربون من أراضي الخث المتدهورة ويستعيد أنظمة الأراضي الرطبة الحرجة.'
     }
   ];
 
@@ -231,7 +231,7 @@ const CarbonCreditMarketplace = () => {
   const handleConfirmPurchase = (purchaseData) => {
     console.log('Purchase confirmed:', purchaseData);
     setSelectedCredit(null);
-    alert(`Purchase successful!\n\nYou have purchased ${purchaseData?.quantity} tonnes of carbon credits.\nTotal: ${purchaseData?.total?.toFixed(2)}\n\nYour NFT certificate will be minted and sent to your dashboard shortly.`);
+    alert(`تم الشراء بنجاح!\n\nلقد اشتريت ${purchaseData?.quantity} طن من اعتمادات الكربون.\nالإجمالي: ${purchaseData?.total?.toFixed(2)}\n\nسيتم إنشاء شهادة NFT الخاصة بك وإرسالها إلى لوحة التحكم قريباً.`);
   };
 
   const handleLogout = () => {
@@ -248,18 +248,18 @@ const CarbonCreditMarketplace = () => {
       <main className="main-content">
         <div className="container-safe py-8 md:py-12">
           {/* Hero Section */}
-          <div className="text-center mb-8 md:mb-12">
+          <div className="text-center mb-8 md:mb-12" dir="rtl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-4">
               <Icon name="Leaf" size={20} />
-              <span className="text-sm font-medium">Verified Carbon Credits</span>
+              <span className="text-sm font-medium">اعتمادات الكربون الموثقة</span>
             </div>
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Carbon Credit Marketplace
+              سوق اعتمادات الكربون
             </h1>
             
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-              Purchase verified carbon credits from UAE and international projects. All credits are blockchain-verified and minted as NFTs for transparency.
+              اشترِ اعتمادات الكربون الموثقة من مشاريع الإمارات والدولية. جميع الاعتمادات موثقة بالبلوكشين ومُعاد إنشاؤها كـ NFTs للشفافية.
             </p>
           </div>
 
@@ -274,7 +274,7 @@ const CarbonCreditMarketplace = () => {
           {/* Results Count */}
           <div className="mb-6">
             <p className="text-sm md:text-base text-muted-foreground">
-              Showing <span className="font-semibold text-foreground">{filteredCredits?.length}</span> carbon credit{filteredCredits?.length !== 1 ? 's' : ''}
+              عرض <span className="font-semibold text-foreground">{filteredCredits?.length}</span> اعتماد كربون{filteredCredits?.length !== 1 ? 'ات' : ''}
             </p>
           </div>
 
