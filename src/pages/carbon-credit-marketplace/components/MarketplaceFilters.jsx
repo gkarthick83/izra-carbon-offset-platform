@@ -11,8 +11,7 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
     location: activeFilters?.location || '',
     verificationStandard: activeFilters?.verificationStandard || '',
     minPrice: activeFilters?.minPrice || '',
-    maxPrice: activeFilters?.maxPrice || '',
-    sortBy: activeFilters?.sortBy || 'relevance'
+    maxPrice: activeFilters?.maxPrice || ''
   });
 
   const projectTypeOptions = [
@@ -42,14 +41,6 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
     { value: 'climate-action', label: 'Climate Action Reserve' }
   ];
 
-  const sortOptions = [
-    { value: 'relevance', label: 'Most Relevant' },
-    { value: 'price-low', label: 'Price: Low to High' },
-    { value: 'price-high', label: 'Price: High to Low' },
-    { value: 'tonnage-high', label: 'Tonnage: High to Low' },
-    { value: 'verification-date', label: 'Recently Verified' }
-  ];
-
   const handleFilterChange = (field, value) => {
     const updatedFilters = { ...filters, [field]: value };
     setFilters(updatedFilters);
@@ -62,14 +53,13 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
       location: '',
       verificationStandard: '',
       minPrice: '',
-      maxPrice: '',
-      sortBy: 'relevance'
+      maxPrice: ''
     };
     setFilters(resetFilters);
     onReset();
   };
 
-  const activeFilterCount = Object.values(filters)?.filter(v => v && v !== 'relevance')?.length;
+  const activeFilterCount = Object.values(filters).filter(v => v).length;
 
   return (
     <>
@@ -93,147 +83,134 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <Select
             label="Project Type"
             options={projectTypeOptions}
             value={filters?.projectType}
             onChange={(value) => handleFilterChange('projectType', value)}
-            placeholder="Select type"
           />
-
+          
           <Select
             label="Location"
             options={locationOptions}
             value={filters?.location}
             onChange={(value) => handleFilterChange('location', value)}
-            placeholder="Select location"
-            searchable
           />
-
+          
           <Select
-            label="Verification"
+            label="Verification Standard"
             options={verificationOptions}
             value={filters?.verificationStandard}
             onChange={(value) => handleFilterChange('verificationStandard', value)}
-            placeholder="Select standard"
           />
 
-          <Input
-            label="Min Price (AED)"
-            type="number"
-            placeholder="0"
-            value={filters?.minPrice}
-            onChange={(e) => handleFilterChange('minPrice', e?.target?.value)}
-            min="0"
-          />
-
-          <Input
-            label="Max Price (AED)"
-            type="number"
-            placeholder="1000"
-            value={filters?.maxPrice}
-            onChange={(e) => handleFilterChange('maxPrice', e?.target?.value)}
-            min="0"
-          />
-        </div>
-
-        <div className="mt-4 pt-4 border-t border-border">
-          <Select
-            label="Sort By"
-            options={sortOptions}
-            value={filters?.sortBy}
-            onChange={(value) => handleFilterChange('sortBy', value)}
-          />
+          <div className="grid grid-cols-2 gap-4">
+            <Input
+              type="number"
+              label="Min Price"
+              placeholder="Min"
+              value={filters?.minPrice}
+              onChange={(e) => handleFilterChange('minPrice', e.target.value)}
+              min="0"
+            />
+            <Input
+              type="number"
+              label="Max Price"
+              placeholder="Max"
+              value={filters?.maxPrice}
+              onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
+              min={filters?.minPrice || "0"}
+            />
+          </div>
         </div>
       </div>
-      {/* Mobile Filter Button */}
-      <div className="lg:hidden mb-4">
+
+      {/* Mobile Filters */}
+      <div className="lg:hidden mb-6">
         <Button
           variant="outline"
-          fullWidth
+          size="sm"
           iconName="Filter"
           iconPosition="left"
           onClick={() => setIsOpen(true)}
+          className="w-full"
         >
-          Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
+          Filter Credits {activeFilterCount > 0 && `(${activeFilterCount})`}
         </Button>
-      </div>
-      {/* Mobile Filter Panel */}
-      {isOpen && (
-        <>
-          <div 
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-[200]"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="fixed inset-x-0 bottom-0 z-[201] bg-card rounded-t-2xl shadow-xl max-h-[85vh] overflow-y-auto">
-            <div className="sticky top-0 bg-card border-b border-border p-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-foreground">Filters</h3>
-              <Button
-                variant="ghost"
-                size="icon"
-                iconName="X"
-                onClick={() => setIsOpen(false)}
-              />
-            </div>
 
-            <div className="p-4 space-y-4">
-              <Select
-                label="Project Type"
-                options={projectTypeOptions}
-                value={filters?.projectType}
-                onChange={(value) => handleFilterChange('projectType', value)}
-              />
+        {isOpen && (
+          <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-card rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-semibold">Filter Credits</h3>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Icon name="X" size={20} />
+                </Button>
+              </div>
 
-              <Select
-                label="Location"
-                options={locationOptions}
-                value={filters?.location}
-                onChange={(value) => handleFilterChange('location', value)}
-                searchable
-              />
+              <div className="space-y-4">
+                <Select
+                  label="Project Type"
+                  options={projectTypeOptions}
+                  value={filters?.projectType}
+                  onChange={(value) => handleFilterChange('projectType', value)}
+                />
+                
+                <Select
+                  label="Location"
+                  options={locationOptions}
+                  value={filters?.location}
+                  onChange={(value) => handleFilterChange('location', value)}
+                />
+                
+                <Select
+                  label="Verification Standard"
+                  options={verificationOptions}
+                  value={filters?.verificationStandard}
+                  onChange={(value) => handleFilterChange('verificationStandard', value)}
+                />
 
-              <Select
-                label="Verification"
-                options={verificationOptions}
-                value={filters?.verificationStandard}
-                onChange={(value) => handleFilterChange('verificationStandard', value)}
-              />
+                <div>
+                  <label className="block text-sm font-medium text-muted-foreground mb-2">
+                    Price Range
+                  </label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <Input
+                      type="number"
+                      placeholder="Min"
+                      value={filters?.minPrice}
+                      onChange={(e) => handleFilterChange('minPrice', e.target.value)}
+                      min="0"
+                    />
+                    <Input
+                      type="number"
+                      placeholder="Max"
+                      value={filters?.maxPrice}
+                      onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
+                      min={filters?.minPrice || "0"}
+                    />
+                  </div>
+                </div>
+              </div>
 
-              <Input
-                label="Min Price (AED)"
-                type="number"
-                placeholder="0"
-                value={filters?.minPrice}
-                onChange={(e) => handleFilterChange('minPrice', e?.target?.value)}
-              />
-
-              <Input
-                label="Max Price (AED)"
-                type="number"
-                placeholder="1000"
-                value={filters?.maxPrice}
-                onChange={(e) => handleFilterChange('maxPrice', e?.target?.value)}
-              />
-
-              <Select
-                label="Sort By"
-                options={sortOptions}
-                value={filters?.sortBy}
-                onChange={(value) => handleFilterChange('sortBy', value)}
-              />
-
-              <div className="flex gap-3 pt-4">
+              <div className="flex gap-3 mt-6">
                 <Button
                   variant="outline"
-                  fullWidth
-                  onClick={handleReset}
+                  className="flex-1"
+                  onClick={() => {
+                    handleReset();
+                    setIsOpen(false);
+                  }}
                 >
                   Reset
                 </Button>
                 <Button
-                  variant="default"
-                  fullWidth
+                  className="flex-1"
                   onClick={() => setIsOpen(false)}
                 >
                   Apply Filters
@@ -241,8 +218,8 @@ const MarketplaceFilters = ({ onFilterChange, onReset, activeFilters }) => {
               </div>
             </div>
           </div>
-        </>
-      )}
+        )}
+      </div>
     </>
   );
 };

@@ -77,13 +77,13 @@ const BlockchainTransparencySection = ({ currentLanguage }) => {
                     <Icon name="CheckCircle2" size={24} className="text-success" />
                   </div>
                   <div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-sm text-white">
                       {currentLanguage === 'en' ? 'Verified Transactions' : 'المعاملات الموثقة'}
                     </div>
-                    <div className="text-2xl font-bold text-foreground">12,847</div>
+                    <div className="text-2xl font-bold text-white">12,847</div>
                   </div>
                 </div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-xs text-white">
                   {currentLanguage === 'en' ? 'Last updated: 22 Dec 2025, 10:33 AM' : 'آخر تحديث: 22 ديسمبر 2025، 10:33 صباحًا'}
                 </div>
               </div>

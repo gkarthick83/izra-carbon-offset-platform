@@ -5,7 +5,6 @@ import Icon from '../../components/AppIcon';
 import Image from '../../components/AppImage';
 import Button from '../../components/ui/Button';
 import TokenDistributionSection from './components/TokenDistributionSection';
-// import UtilitySection from './components/UtilitySection';
 import RevenueModelSection from './components/RevenueModelSection';
 import StakingSection from './components/StakingSection';
 import RoadmapSection from './components/RoadmapSection';
@@ -43,10 +42,11 @@ const Tokenomics = () => {
         cta: "Invest in IZRA"
       },
       stats: [
-      { label: "Total Supply", value: "1,000,000,000", suffix: "IZRA" },
-      { label: "Initial Price", value: "$0.10", suffix: "USD" },
-      { label: "Platform Fee", value: "2%", suffix: "" },
-      { label: "Investor Share", value: "40%", suffix: "" }]
+        { label: "Total Supply", value: "1,000,000,000", suffix: "IZRA" },
+        { label: "Initial Price", value: "$0.10", suffix: "USD" },
+        { label: "Platform Fee", value: "2%", suffix: "" },
+        { label: "Investor Share", value: "40%", suffix: "" }
+      ]
     },
     ar: {
       hero: {
@@ -57,10 +57,11 @@ const Tokenomics = () => {
         cta: "استثمر في إزرع"
       },
       stats: [
-      { label: "إجمالي العرض", value: "1,000,000,000", suffix: "إزرع" },
-      { label: "السعر الأولي", value: "$0.10", suffix: "دولار" },
-      { label: "رسوم المنصة", value: "2%", suffix: "" },
-      { label: "حصة المستثمر", value: "40%", suffix: "" }]
+        { label: "إجمالي العرض", value: "1,000,000,000", suffix: "إزرع" },
+        { label: "السعر الأولي", value: "$0.10", suffix: "دولار" },
+        { label: "رسوم المنصة", value: "2%", suffix: "" },
+        { label: "حصة المستثمر", value: "40%", suffix: "" }
+      ]
     }
   };
 
@@ -71,7 +72,8 @@ const Tokenomics = () => {
       <AuthenticatedHeader
         isAuthenticated={false}
         userRole={null}
-        onLogout={() => {}} />
+        onLogout={() => {}} 
+      />
 
       <main className="flex-grow">
         <section className="relative pt-0 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
@@ -138,7 +140,6 @@ const Tokenomics = () => {
         </section>
 
         <TokenDistributionSection currentLanguage={currentLanguage} />
-        {/* <UtilitySection currentLanguage={currentLanguage} /> */}
         <RevenueModelSection currentLanguage={currentLanguage} />
         <StakingSection currentLanguage={currentLanguage} />
         <RoadmapSection currentLanguage={currentLanguage} />
