@@ -46,40 +46,29 @@ const LandingPage = () => {
 
       <main className="main-content">
         <HeroSection 
-          currentLanguage={currentLanguage}
           onNavigate={handleNavigation}
         />
-
-        <EmiratesCoverageSection 
-          currentLanguage={currentLanguage}
-        />
-
+        <EmiratesCoverageSection currentLanguage={currentLanguage} />
         <SponsorshipPackagesSection 
-          currentLanguage={currentLanguage}
+          currentLanguage={currentLanguage} 
           onNavigate={handleNavigation}
         />
-
-        <BlockchainTransparencySection 
-          currentLanguage={currentLanguage}
-        />
-
+        <BlockchainTransparencySection currentLanguage={currentLanguage} />
         <MarketplacePreviewSection 
-          currentLanguage={currentLanguage}
+          currentLanguage={currentLanguage} 
           onNavigate={handleNavigation}
         />
-
         <InvestorCallToActionSection 
-          currentLanguage={currentLanguage}
+          currentLanguage={currentLanguage} 
+          onNavigate={handleNavigation}
         />
-
-        <PartnerShowcaseSection 
-          currentLanguage={currentLanguage}
-        />
-
-        <FooterSection 
-          currentLanguage={currentLanguage}
-        />
+        <PartnerShowcaseSection currentLanguage={currentLanguage} />
       </main>
+
+      <FooterSection 
+        currentLanguage={currentLanguage} 
+        onNavigate={handleNavigation}
+      />
     </div>
   );
 };

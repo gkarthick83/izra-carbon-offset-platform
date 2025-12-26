@@ -70,7 +70,7 @@ const LoginHero = ({ currentLanguage }) => {
           alt="Lush green mangrove forest with dense foliage and intricate root systems in coastal wetland environment showcasing natural carbon sequestration"
           className="w-full h-full object-cover" />
 
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-primary/50 to-secondary/70" />
       </div>
       <div className="relative z-10 max-w-2xl">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 md:mb-8">
